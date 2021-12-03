@@ -1,0 +1,28 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('title'); ?>
+ m4_6d_page_2
+<?php $this->stopSection(); ?>
+
+
+<?php $this->startSection('header_content'); ?>
+ <h1 style="font-size: xx-large">Gewinner</h1>
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('main_content'); ?>
+ <div id="News" class="griditem griditem1">
+ <h1>Bald gibt es Essen auch online ;)</h1>
+ Mensen verpflegen – häufig in Verbindung mit Cafeterien – in erster Linie die Studenten und die Mitarbeiter
+ von Hochschulen mit warmem Mittagessen, zum Teil auch Abendessen.
+ Hochschulmensen gehören mit je bis zu 12.000 ausgegebenen Essen am Tag zu den größten Einrichtungen der
+ Gemeinschaftsverpflegung.[1]
+ </div>
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('footer_content'); ?>
+ <ol class="Impressum">
+ <li><a>(c) E-Mensa GmbH &nbsp&nbsp|&nbsp&nbsp</a></li>
+ <li><a>m4_6d_page_2 &nbsp&nbsp|&nbsp&nbsp</a></li>
+ </ol>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('examples.layout.m4_6d_layout'); } ?>

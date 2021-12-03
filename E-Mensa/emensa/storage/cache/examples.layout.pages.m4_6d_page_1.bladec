@@ -1,0 +1,116 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('title'); ?>
+ m4_6d_page_1.blade
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('css'); ?>
+ .grid-container {
+ display: grid;
+ justify-content: left;
+ grid-column-gap: 20px;
+ }
+
+ .navbar {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+ overflow: hidden;
+ background-color: khaki;
+ }
+
+ .navbar > li {
+ float: left;
+ }
+
+ .navbar > li a {
+ display: block;
+ color: dimgrey;
+ text-align: center;
+ padding: 14px 16px;
+ text-decoration: none;
+ }
+
+ .navbar > li a:hover {
+ background-color: khaki;
+ }
+
+ .griditem {
+ width: 200px;
+ margin: 10px;
+ background-color: transparent;
+ grid-template-row: 1000px;
+ font-weight: bold;
+ color: dimgrey;
+ }
+
+ .griditem1 {
+ min-height: 50px;
+ width: 1000px
+ }
+
+ .Impressum {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+ overflow: hidden;
+ background-color: transparent;
+ }
+
+ .Impressum > li {
+ color: dimgrey;
+ float: left
+ }
+
+ .Impressum > li > a {
+ display: block;
+ text-align: center
+ }
+
+ .griditem5 > footer {
+ text-align: center
+ }
+
+ .griditem5 {
+ width: available;
+ justify-items: center
+ }
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('header_content'); ?>
+ <nav id="About us">
+ <ul class="navbar">
+ <li><a href="#meals">Gerichte</a></li>
+ <li><a href="#News">Nachrichten</a></li>
+ <li><a href="#About us">Wichtig für uns</a></li>
+ </ul>
+ </nav>
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('main_content'); ?>
+ <ul>
+ <li>Rindfleisch mit Bambus, Kaiserschoten und rotem Paprika, dazu Mie Nudeln</li>
+ <li>Spinatrisotto mit kleinen Samosateigecken und gemischten Salat</li>
+ <li>Pommes mit Schnitzel</li>
+ <li>wagyu steak</li>
+ </ul>
+ <div id="News" class="griditem griditem1">
+ <h1>Bald gibt es Essen auch online ;)</h1>
+ Mensen verpflegen – häufig in Verbindung mit Cafeterien – in erster Linie die Studenten und die Mitarbeiter
+ von Hochschulen mit warmem Mittagessen, zum Teil auch Abendessen.
+ Hochschulmensen gehören mit je bis zu 12.000 ausgegebenen Essen am Tag zu den größten Einrichtungen der
+ Gemeinschaftsverpflegung.[1]
+ </div>
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('footer_content'); ?>
+ <footer id="Contact">
+ <ol class="Impressum">
+ <li><a>(c) E-Mensa GmbH &nbsp&nbsp|&nbsp&nbsp</a></li>
+ <li><a>m4_6d_page_1.blade &nbsp&nbsp|&nbsp&nbsp</a></li>
+ </ol>
+ </footer>
+<?php $this->stopSection(); ?>
+
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('examples.layout.m4_6d_layout'); } ?>

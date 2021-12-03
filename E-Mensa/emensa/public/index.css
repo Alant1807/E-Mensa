@@ -1,0 +1,241 @@
+li > a {
+    color: white;
+    text-decoration: none
+}
+
+img.bild {
+    width: 100px;
+    height: 100px
+}
+
+body {
+    background-color: #333333
+}
+
+/*Break mit CSS*/
+.br {
+    Display: block
+}
+
+/*Logo in der Navbar*/
+.logo {
+    width: 60px;
+    height: 40px
+}
+
+/*Ueberschriften*/
+div > h1 {
+    color: white;
+    font-weight: bold
+}
+
+div > a {
+    color: white;
+    font-weight: bold
+}
+
+/*Übergeordneter Grid Container*/
+.grid-container {
+    display: grid;
+    justify-content: left;
+    grid-column-gap: 20px;
+}
+
+/*Algemein für alle Griditems*/
+.griditem {
+    width: 200px;
+    margin: 10px;
+    background-color: transparent;
+    grid-template-row: 1000px;
+    font-weight: bold;
+    color: white;
+}
+
+/*Navigationsbar*/
+.griditem1 {
+    min-height: 50px;
+    width: 1000px
+}
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+.navbar > li {
+    float: left;
+}
+
+.navbar > li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar > li a:hover {
+    background-color: #111;
+}
+
+/*E-Mensa in Zahlen*/
+.grid-container-2 {
+    min-height: 200px;
+    width: fit-content;
+    display: grid;
+    grid-column-gap: 200px;
+    grid-template-areas:
+                    'Überschrift Überschrift Überschrift'
+                    'Besuche Anmeldungen Speisen';
+}
+
+.griditem2-1 {
+    grid-area: Überschrift;
+    width: fit-content
+}
+
+.griditem2-2 {
+    grid-area: Besuche;
+}
+
+.griditem2-3 {
+    grid-area: Anmeldungen
+}
+
+.griditem2-4 {
+    grid-area: Speisen
+}
+
+
+/*Tabelle*/
+.griditem2 {
+    width: fit-content;
+    grid-column-gap: 200px
+}
+
+table {
+    border: 4px solid black;
+    width: max-content;
+    color: black;
+    background-color: white;
+    border-collapse: collapse
+}
+
+td, th {
+    border: 1px solid black;
+    font-size: large
+}
+
+th {
+    background-color: deepskyblue;
+    color: white
+}
+
+/*Eingabefeld*/
+.griditem3 {
+    max-height: 100px;
+    width: fit-content;
+    color: white;
+    font-weight: bold;
+}
+
+.grid-container-3 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 200px);
+    grid-auto-rows: minmax(50px, auto);
+    grid-template-areas:
+                    'Überschrift Überschrift Überschrift'
+                    'Name E-Mail Sprache'
+                    'Datenschutzerklärung Datenschutzerklärung Datenschutzerklärung'
+}
+
+input {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px
+}
+
+.griditem3-1 {
+    grid-area: Überschrift
+}
+
+.griditem3-2 {
+    grid-area: Name;
+}
+
+.griditem3-3 {
+    grid-area: E-Mail;
+}
+
+.griditem3-4 {
+    grid-area: Sprache
+}
+
+.griditem3-5 {
+    grid-area: Datenschutzerklärung;
+}
+
+.griditem3-5 > input.post {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background-color: deepskyblue;
+    width: 200px;
+    height: fit-content;
+    text-align: center
+}
+
+select {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-appearance: none;
+    height: 2em;
+    background-image: url("https://cdn.discordapp.com/attachments/881647918145224744/899291664433164288/selected.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: 6.8em 0.05em;
+    width: 120px;
+    height: 20px
+}
+
+/*Liste*/
+.griditem4 {
+    max-height: fit-content;
+    width: fit-content;
+    color: white;
+    font-weight: bold;
+    grid-gap: 0
+}
+
+/*Impressum*/
+.griditem5 {
+    width: available;
+    justify-items: center
+}
+
+.Impressum {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.Impressum > li {
+    color: white;
+    float: left
+}
+
+.Impressum > li > a {
+    display: block;
+    text-align: center
+}
+
+.griditem5 > footer {
+    text-align: center
+}
