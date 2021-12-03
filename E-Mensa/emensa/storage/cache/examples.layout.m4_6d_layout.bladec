@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
  <meta charset="UTF-8">
- <title><?php echo $this->yieldContent('title'); ?></title>
- <style><?php echo $this->yieldContent('css'); ?></style>
+ <title><?php echo $this->yieldContent("title"); ?></title>
 </head>
 <body>
-<header><?php echo $this->yieldContent('header_content'); ?></header>
-<main id="home" class="grid-container"><?php echo $this->yieldContent('main_content'); ?></main>
-<div class="griditem5">
- <footer class="grid-container"><?php echo $this->yieldContent('footer_content'); ?></footer>
-</div>
+<header><h1><?php echo $this->yieldContent("header"); ?></h1></header>
+<main><h1><?php echo $this->yieldContent("main"); ?></h1></main>
+<footer><h1><?php echo $this->yieldContent("footer"); ?></h1></footer>
 </body>
 </html>

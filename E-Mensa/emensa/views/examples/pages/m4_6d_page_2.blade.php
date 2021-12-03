@@ -1,4 +1,4 @@
-@extends('m4_6d_layout')
+@extends('examples.layout.m4_6d_layout')
 
 @section('title')
     Titel Seite 2
