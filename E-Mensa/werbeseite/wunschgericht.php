@@ -1,80 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        h3 {
-            alignment: center
-        }
+    <title>Wunschgericht</title>
 
-        body {
-            background-color: #333333;
-            color: white
-        }
-
-        .Grid-Container1 {
-            display: grid;
-            grid-area: GerichtName;
-            grid-template-areas: "LabelMealName FormGerichtName";
-            grid-template-columns: 1fr 7fr
-        }
-
-        .Grid-Container2 {
-            display: grid;
-            grid-area: Beschreibung;
-            grid-template-areas: "LabelDescription FormBeschreibung";
-            grid-template-columns: 1fr 7fr
-        }
-
-        .Grid-Container3 {
-            display: grid;
-            grid-area: Kontaktdaten;
-            grid-template-areas: "LabelName FormName LabelMail FormEmail";
-            grid-template-columns: 1fr 3fr 1fr 3fr
-        }
-
-
-        .LabelDescription {
-            grid-area: LabelDescription;
-            display: grid
-        }
-
-        .LabelMail {
-            grid-area: LabelMail
-        }
-
-        .LabelMealName {
-            grid-area: LabelMealName
-        }
-
-        .LabelName {
-            grid-area: LabelName
-        }
-
-        .form-beschreibung {
-            grid-area: FormBeschreibung
-        }
-
-        .form-email {
-            grid-area: FormEmail
-        }
-
-        .form-gerichtname {
-            grid-area: FormGerichtName
-        }
-
-        .form-name {
-            grid-area: FormName
-        }
-
-        .button {
-            background-color: dodgerblue;
-            color: white
-        }
-
-
-    </style>
 </head>
 
 <body>

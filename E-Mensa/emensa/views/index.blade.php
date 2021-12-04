@@ -70,6 +70,6 @@
         <li><a>(c) E-Mensa GmbH &nbsp&nbsp|&nbsp&nbsp</a></li>
         <li><a>Name &nbsp&nbsp|&nbsp&nbsp</a></li>
         <li><a href=index.blade.php> Impressum &nbsp&nbsp|&nbsp&nbsp</a></li>
-        <li><a href=""> Wunschgericht </a></li>
+        <li><a href="/wunschgericht"> Wunschgericht </a></li>
     </ol>
 @endsection

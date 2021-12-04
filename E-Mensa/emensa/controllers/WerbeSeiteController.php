@@ -11,4 +11,8 @@ class WerbeSeiteController
         ];
         return view('index', $vars);
     }
+
+    public function wunschgericht(){
+        return view('wunschgericht');
+    }
 }
