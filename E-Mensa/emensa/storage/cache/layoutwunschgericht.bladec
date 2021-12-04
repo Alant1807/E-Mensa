@@ -5,7 +5,6 @@
  <title><?php echo $this->yieldContent('bartitle'); ?></title>
  <link rel="stylesheet" href="wunschgericht.css">
 </head>
-
 <body>
 <header>
  <h3><?php echo $this->yieldContent('title'); ?></h3>

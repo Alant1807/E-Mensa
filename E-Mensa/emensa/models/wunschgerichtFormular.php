@@ -50,3 +50,5 @@ if (isset($_POST['submit'])) {
 
     mysqli_close($link);
 }
+
+include('../views/wunschgericht.blade.php');
