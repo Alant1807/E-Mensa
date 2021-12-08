@@ -9,7 +9,7 @@
 @endsection
 
 @section('form')
-    <form class="form" method="post" action="../models/wunschgerichtFormular.php">
+    <form class="form" method="post" action="wunschgericht">
 
         <a class="Grid-Container1">
             <label for="mealname" class="LabelMealName">Name des Gerichtes</label>
