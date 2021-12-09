@@ -51,8 +51,8 @@
             @foreach($gerichte as $key => $gericht)
                 <tr>
                     <td>{{$gericht['name']}}</td>
-                    <td>{{$gericht['preis_intern']}}</td>
-                    <td>{{$gericht['preis_extern']}}</td>
+                    <td>{{$gericht['preis_intern']}}€</td>
+                    <td>{{$gericht['preis_extern']}}€</td>
                     <td>{{$gericht['allergene']}}</td>
                 </tr>
             @endforeach
