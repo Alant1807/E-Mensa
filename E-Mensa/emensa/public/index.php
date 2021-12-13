@@ -17,6 +17,8 @@ try {
     echo "DOCUMENT_ROOT: {$_SERVER['DOCUMENT_ROOT']}\t\tError: ".$ex->getMessage();
 }
 use eftec\bladeone\BladeOne;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 /* Routing Script for PHP Dev Server */
 $verbosity = VERBOSITY;
@@ -205,6 +207,14 @@ function connectdb()
 
     return $link;
 }
+
+function logger()
+{
+    $log = new Logger('name');
+    $log->pushHandler(new StreamHandler('../storage/logs/your.log'));
+    return $log;
+}
+
 
 function view($viewname, $viewargs = array())
 {
