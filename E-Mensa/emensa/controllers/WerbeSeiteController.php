@@ -16,8 +16,6 @@ class WerbeSeiteController
     {
         if (isset($_POST['submit'])) {
 
-            $link = connectdb();
-
             $gerichtname = "";
             if (isset($_POST['mealname'])) {
                 $gerichtname = trim($_POST['mealname']);
@@ -45,7 +43,9 @@ class WerbeSeiteController
 
             // speichern
 
-            $einfuegen = $link->prepare("
+            wgericht($name, $email, $gerichtname, $erstellungsdatum, $beschreibung);
+
+            /*$einfuegen = $link->prepare("
                  INSERT INTO ersteller (email, name) 
                  VALUES (?, ?)
                     ");
@@ -63,6 +63,7 @@ class WerbeSeiteController
             header('Location: wunschgericht');
 
             mysqli_close($link);
+        }*/
         }
         return view('wunschgericht');
     }
