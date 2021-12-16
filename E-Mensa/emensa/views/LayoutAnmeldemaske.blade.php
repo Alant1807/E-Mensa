@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Mensa</title>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+</head>
+<body>
+    <form method="post" action="">
+        <label for="mail"> E-Mail:</label>
+        <input type="email" id="mail">
+        <label for="password"> Passwort:</label>
+        <input id="password" type="password">
+        <input type="submit" VALUE="anmelden">
+    </form>
+</body>
+</html>
