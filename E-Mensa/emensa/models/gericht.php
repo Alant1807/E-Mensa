@@ -42,7 +42,7 @@ function db_gericht_select_menu()
 {
     $link = connectdb();
 
-    $sql = "SELECT gericht.name, preis_intern, preis_extern, GROUP_CONCAT(allergen.code) allergene
+    $sql = "SELECT gericht.name, preis_intern, preis_extern,bildname, GROUP_CONCAT(allergen.code) allergene
                 FROM
                     (allergen RIGHT JOIN gericht_hat_allergen ON allergen.code=gericht_hat_allergen.code)
                     RIGHT JOIN gericht ON gericht_hat_allergen.gericht_id=gericht.id

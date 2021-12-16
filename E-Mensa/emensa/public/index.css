@@ -239,3 +239,8 @@ select {
 .griditem5 > footer {
     text-align: center
 }
+
+.bilder{
+    width: 120px;
+    height: 100px;
+}

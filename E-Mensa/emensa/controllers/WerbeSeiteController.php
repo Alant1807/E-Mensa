@@ -44,26 +44,6 @@ class WerbeSeiteController
             // speichern
 
             wgericht($name, $email, $gerichtname, $erstellungsdatum, $beschreibung);
-
-            /*$einfuegen = $link->prepare("
-                 INSERT INTO ersteller (email, name) 
-                 VALUES (?, ?)
-                    ");
-            $einfuegen->bind_param('ss', $email, $name);
-            $einfuegen->execute();
-
-            $einfuegen2 = $link->prepare("
-        INSERT INTO wunschgericht (gerichtname, erstellungsdatum, beschreibung, ErstellerID)
-        VALUES(?,?,?,?)
-        ");
-            $einfuegen2->bind_param('ssss', $gerichtname, $erstellungsdatum, $beschreibung, $email);
-            $einfuegen2->execute();
-
-            unset($_POST);
-            header('Location: wunschgericht');
-
-            mysqli_close($link);
-        }*/
         }
         return view('wunschgericht');
     }

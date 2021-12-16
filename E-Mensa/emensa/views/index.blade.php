@@ -45,6 +45,7 @@
                 <th> Preis intern</th>
                 <th> Preis extern</th>
                 <th> Allergene</th>
+                <th> Bilder</th>
             </tr>
             </thead>
             <tbody>
@@ -54,6 +55,15 @@
                     <td>{{$gericht['preis_intern']}}€</td>
                     <td>{{$gericht['preis_extern']}}€</td>
                     <td>{{$gericht['allergene']}}</td>
+                    @if($gericht['bildname'] == NULL || !file_exists("img/gerichte/" . $gericht['bildname']))
+                        <td><img class="bilder" src="/img/gerichte/00_image_missing.jpg" alt="Bild des Gerichtes">
+                        </td>
+                    @else
+                        <td><img class="bilder" src="/img/gerichte/{{$gericht['bildname']}}"
+                                 alt="Bild des Gerichtes"
+                            ></td>
+                    @endif
+
                 </tr>
             @endforeach
             </tbody>
