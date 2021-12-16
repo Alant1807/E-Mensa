@@ -1,4 +1,4 @@
-@extends('layoutwerbeseite')
+@extends('Layout.layoutwerbeseite')
 
 @section('navbereich')
     <ul class="navbar">
@@ -9,6 +9,17 @@
         <li><a href="#numbers">Zahlen</a></li>
         <li><a href="#Contact">Kontakt</a></li>
         <li><a href="#About us">Wichtig für uns</a></li>
+        <li>
+            @if($_SESSION['login_ok'])
+                <a href="/abmeldung">Abmelden</a>
+                {{$_SESSION['user']}} <br>
+            @else
+                <a href="/anmeldung">Anmelden</a>
+        </li>
+        <li>
+            <a href="/registrieren">Registrieren</a>
+            @endif
+        </li>
     </ul>
     <br>
 @endsection

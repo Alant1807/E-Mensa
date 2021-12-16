@@ -1,4 +1,4 @@
-@extends("layout")
+@extends("Layout.layout")
 
 @section("content")
 <h1>Nicht implementiert</h1>

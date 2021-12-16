@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+ <meta charset="UTF-8">
+ <title><?php echo $this->yieldContent('bartitle'); ?></title>
+ <link rel="stylesheet" href="wunschgericht.css">
+</head>
+<body>
+<header>
+ <h3><?php echo $this->yieldContent('title'); ?></h3>
+</header>
+<main>
+ <?php echo $this->yieldContent('form'); ?>
+</main>
+</body>

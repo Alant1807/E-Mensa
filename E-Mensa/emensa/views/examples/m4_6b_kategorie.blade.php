@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('Layout.layout')
 
 @section('css')
     <style>

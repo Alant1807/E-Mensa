@@ -64,9 +64,9 @@ class RequestData
 
 class FrontController
 {
-
     public static function handleRequest($url, $method = 'GET', $verbosity = 0, $configPath = CONFIG_WEBROUTES)
     {
+        session_start();
         if (strpos($url, ':') === FALSE) $url = $_SERVER['HTTP_HOST'] . ':' . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI']; // FIX no port given bug
 
         $scriptPath = dirname(__FILE__, 2) . '/';

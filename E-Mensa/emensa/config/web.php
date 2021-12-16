@@ -13,6 +13,11 @@ return array(
     '/dbconnect' => 'DemoController@dbconnect',
     '/debug' => 'HomeController@debug',
     '/wunschgericht' => 'WerbeSeiteController@wunschgericht',
+    '/anmeldung' => 'AnmeldungController@anmeldung',
+    '/anmeldung_verifizieren' => 'AnmeldungController@anmeldung_verifizieren',
+    '/registrieren' => 'AnmeldungController@registrieren',
+    '/registrieren_verifizieren' => 'AnmeldungController@registrieren_verifizieren',
+    '/abmeldung' => 'AnmeldungController@abmeldung',
 
     // Erstes Beispiel:
     '/m4_6a_queryparameter' => 'ExampleController@m4_6a_queryparameter',

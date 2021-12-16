@@ -28,4 +28,4 @@
  class="button">
  </form>
 <?php $this->stopSection(); ?>
-<?php if (isset($_shouldextend[1])) { echo $this->runChild('layoutwunschgericht'); } ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('Layout.layoutwunschgericht'); } ?>

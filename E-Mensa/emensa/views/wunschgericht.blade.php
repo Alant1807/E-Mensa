@@ -1,4 +1,4 @@
-@extends('layoutwunschgericht')
+@extends('Layout.layoutwunschgericht')
 
 @section('bartitle')
     Wunschgericht
