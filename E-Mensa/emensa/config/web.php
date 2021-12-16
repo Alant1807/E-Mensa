@@ -12,6 +12,7 @@ return array(
     '/demo' => 'DemoController@demo',
     '/dbconnect' => 'DemoController@dbconnect',
     '/debug' => 'HomeController@debug',
+    '/Anmeldung' => 'AnmeldeController@Anmeldung',
 
     // Erstes Beispiel:
     '/m4_6a_queryparameter' => 'ExampleController@m4_6a_queryparameter',

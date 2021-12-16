@@ -5,7 +5,7 @@ require "wunschgericht.php";
 $link = mysqli_connect("127.0.0.1",
     "root",
     "root",
-    "emensawerbeseite"
+    "emensawebeseite"
 
 );
 if (!$link) {
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
     $einfuegen->execute();
 
     $einfuegen2 = $link->prepare("
-        INSERT INTO wunschgericht (gerichtname, erstellungsdatum, beschreibung, ErstellerID)
+        INSERT INTO wunschgericht (gerichtname, erstellungsdatum, beschreibung, Ersteller)
         VALUES(?,?,?,?)
         ");
     $einfuegen2->bind_param('ssss', $gerichtname, $erstellungsdatum, $beschreibung, $email);

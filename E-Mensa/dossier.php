@@ -38,13 +38,13 @@ $TabellenInhalt =
         20 => ['8 1)', '5 min', '10 min', 'Wusste nihct wie ich es mit ALTER machen kann', 'ALTER TABLE gericht_hat_kategorie ADD UNIQUE (gericht_id, kategorie_id)', 'keine', 'keine'],
         21 => ['8 2)', '5 min', '5 min', 'keine', 'ALTER TABLE gericht ADD INDEX NameID (name)', 'keine', 'keine'],
         22 => ['8 3)', '5 min', '15 min', 'keine', '
-        ALTER TABLE gericht_hat_allergen DROP FOREIGN KEY gericht_hat_allergen_ibfk_2
+        ALTER TABLE gericht_hat_allergen DROP FOREIGN KEY gericht_hat_allergen_ibfk_2;
         ALTER TABLE gericht_hat_allergen
             ADD CONSTRAINT gericht_hat_allergen_ibfk_2
                 FOREIGN KEY (gericht_id)
                     REFERENCES gericht (id)
                     ON DELETE CASCADE;            
-        ALTER TABLE gericht_hat_kategorie DROP FOREIGN KEY gericht_hat_kategorie_ibfk_1     
+        ALTER TABLE gericht_hat_kategorie DROP FOREIGN KEY gericht_hat_kategorie_ibfk_1;     
         ALTER TABLE gericht_hat_kategorie
             ADD CONSTRAINT gericht_hat_kategorie_ibfk_1
                 FOREIGN KEY (gericht_id)

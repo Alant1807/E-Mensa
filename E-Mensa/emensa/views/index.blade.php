@@ -9,6 +9,7 @@
         <li><a href="#numbers">Zahlen</a></li>
         <li><a href="#Contact">Kontakt</a></li>
         <li><a href="#About us">Wichtig für uns</a></li>
+        <li><a href="/Anmeldung">Anmelden</a></li>
     </ul>
     <br>
 @endsection
@@ -73,3 +74,4 @@
         <li><a href=""> Wunschgericht </a></li>
     </ol>
 @endsection
+
