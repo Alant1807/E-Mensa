@@ -1,4 +1,4 @@
-@extends('Layout.layoutAnmeldung')
+@extends('Layout.layoutRegistrieren')
 
 @section('bartitle')
     Registrieren
@@ -10,20 +10,23 @@
 
 @section('form')
     <form action="registrieren_verifizieren" method="POST">
-        <label for="user">E-Mail:</label><br>
-        <input type="email" id="user" name="email"><br>
-        @if(isset($existUser))
-            {{$existUser}}
-        @elseif(isset($emptyuser))
-            {{$emptyuser}}
-        @endif
-        <label for="pass">Passwort:</label><br>
-        <input type="password" id="pass" name="password"><br>
+        <label for="user">E-Mail:</label>
+        <input type="email" id="user" name="email">
+        <div class="errormessage">
+            @if(isset($existUser))
+                {{$existUser}}
+            @elseif(isset($emptyuser))
+                {{$emptyuser}}
+            @endif
+        </div>
+        <label for="pass">Passwort:</label>
+        <input type="password" id="pass" name="password">
+        <div class="errormessage">
         @if(isset($emptypassword))
             {{$emptypassword}}
         @endif()
-        <input type="checkbox" name="checkadmin"> Admin<br>
+        </div>
+        <input type="checkbox" name="checkadmin"> Admin
         <input type="submit" name="submit" value="Registrieren">
-        <input type="submit" name="back" value="Hauptseite"><br><br>
     </form>
 @endsection

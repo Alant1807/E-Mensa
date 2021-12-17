@@ -3,12 +3,17 @@
 <head>
  <meta charset="UTF-8">
  <title><?php echo $this->yieldContent('bartitle'); ?></title>
+ <link rel="stylesheet" href="/CSS/Registrieren.css">
 </head>
 <body>
-<header>
+<div class="container">
+ <header>
  <h3><?php echo $this->yieldContent('title'); ?></h3>
-</header>
-<main>
+ </header>
+ <main>
  <?php echo $this->yieldContent('form'); ?>
-</main>
+ </main>
+ <footer>
+ </footer>
+</div>
 </body>

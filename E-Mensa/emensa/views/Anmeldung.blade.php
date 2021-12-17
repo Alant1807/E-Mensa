@@ -10,21 +10,26 @@
 
 @section('form')
     <form action="anmeldung_verifizieren" method="POST">
-        <label for="user">E-Mail:</label><br>
-        <input type="email" id="user" name="email"><br>
+        <label for="user">E-Mail:</label>
+        <input type="email" id="user" name="email">
+        <div class="errormessage">
         @if(isset($emptyuser))
             {{$emptyuser}}
         @endif
-        <label for="pass">Passwort:</label><br>
-        <input type="password" id="pass" name="password" ><br>
+        </div>
+        <label for="pass">Passwort:</label>
+        <input type="password" id="pass" name="password" >
+        <div class="errormessage">
         @if(isset($emptypassword))
             {{$emptypassword}}
         @endif
-        <input type="checkbox" name="checkadmin"> Admin<br>
+        </div>
+        <input type="checkbox" name="checkadmin"> Admin
         <input type="submit" name="submit" value="Anmeldung">
-        <input type="submit" name="back" value="Hauptseite"><br><br>
+        <div class="errormessage">
         @if(isset($msg) && !isset($emptyuser) && !isset($emptypassword))
             {{$msg}}
         @endif
+        </div>
     </form>
 @endsection
