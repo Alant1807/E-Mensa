@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('bartitle')</title>
+    <link rel="stylesheet" href="/CSS/wunschgericht.css">
 </head>
 <body>
 <header>

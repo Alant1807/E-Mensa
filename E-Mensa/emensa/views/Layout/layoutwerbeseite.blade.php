@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>E-Mensa</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/CSS/index.css">
 </head>
 <body>
 <nav id="About us">@yield('navbereich')</nav>

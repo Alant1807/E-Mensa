@@ -16,7 +16,7 @@ if (!isset($_SESSION['refresher'])) {
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../emensa/public/index.css">
+    <link rel="stylesheet" href="../emensa/public/CSS/index.css">
 </head>
 
 <body>

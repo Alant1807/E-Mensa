@@ -3,7 +3,7 @@
 <head>
  <meta charset="UTF-8">
  <title><?php echo $this->yieldContent('bartitle'); ?></title>
- <link rel="stylesheet" href="wunschgericht.css">
+ <link rel="stylesheet" href="/CSS/wunschgericht.css">
 </head>
 <body>
 <header>
