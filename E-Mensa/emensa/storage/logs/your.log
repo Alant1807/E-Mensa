@@ -141,3 +141,7 @@
 [2021-12-17T14:52:26.647710+00:00] name.INFO: logout ["test@user.de"] []
 [2021-12-17T14:52:26.659986+00:00] name.INFO: Zugriff auf Hauptseite [] []
 [2021-12-17T14:52:37.310769+00:00] name.WARNING: failed login ["test@user.de"] []
+[2021-12-17T15:14:15.677678+00:00] name.INFO: Zugriff auf Hauptseite [] []
+[2021-12-17T15:14:23.983155+00:00] name.WARNING: failed login [""] []
+[2021-12-17T15:14:25.565347+00:00] name.INFO: Zugriff auf Hauptseite [] []
+[2021-12-17T15:14:27.977750+00:00] name.INFO: Zugriff auf Hauptseite [] []
