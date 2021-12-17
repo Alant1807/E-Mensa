@@ -12,7 +12,6 @@
         <li>
             @if($_SESSION['login_ok'])
                 <a href="/abmeldung">Abmelden</a>
-                {{$_SESSION['user']}} <br>
             @else
                 <a href="/anmeldung">Anmelden</a>
         </li>
@@ -89,8 +88,14 @@
 @section('impressum')
     <ol class="Impressum">
         <li><a>(c) E-Mensa GmbH &nbsp&nbsp|&nbsp&nbsp</a></li>
-        <li><a>Name &nbsp&nbsp|&nbsp&nbsp</a></li>
+        <li>
+            <a>
+                @if($_SESSION['login_ok'])
+                    {{$_SESSION['email']}} &nbsp&nbsp|&nbsp&nbsp
+                @endif
+            </a>
+        </li>
         <li><a href=index.blade.php> Impressum &nbsp&nbsp|&nbsp&nbsp</a></li>
-        <li><a href="/wunschgericht"> Wunschgericht </a></li>
+        <li><a href="/wunschgericht"> Wunschgericht</a></li>
     </ol>
 @endsection

@@ -9,6 +9,8 @@ class WerbeSeiteController
         $vars = ['gerichte' => db_gericht_select_menu(),
             'allergene' => db_allergenlist()
         ];
+        $_SESSION['target'] = "";
+        logger()->info('Zugriff auf Hauptseite');
         return view('index', $vars);
     }
 

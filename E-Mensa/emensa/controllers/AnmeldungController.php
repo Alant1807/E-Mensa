@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/../models/login.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/login.php');
 
 class AnmeldungController
 {
@@ -18,7 +18,7 @@ class AnmeldungController
 
     public function registrieren_verifizieren()
     {
-        if(isset($_POST['submit'])) {
+        if (isset($_POST['submit'])) {
             $email = trim($_POST['email'] ?? NULL);
             $password = filter_input(INPUT_POST, 'password');
             $admin = filter_input(INPUT_POST, 'checkadmin');
@@ -30,36 +30,47 @@ class AnmeldungController
                 $_SESSION['existUser'] = "E-Mail ist schon vergeben";
                 header('Location: /registrieren');
             }
-            if (isset($_POST['checkadmin'])) {
+            if (isset($_POST['checkadmin']) && $data['email'] != $email) {
                 insertUser($email, $passwordhash, true);
-            } else {
+                $_SESSION['login_ok'] = true;
+                $_SESSION['email'] = $email;
+                $_SESSION['userID'] = $data['id'];
+                $_SESSION['admin'] = $data['admin'];
+                $target = $_SESSION['target'];
+                logger()->info('register', [$email]);
+                logger()->info('Zugriff auf Hauptseite');
+                header('Location: /' . $target);
+            } else if (!isset($_POST['checkadmin']) && $data['email'] != $email) {
                 insertUser($email, $passwordhash, false);
+                $_SESSION['login_ok'] = true;
+                $_SESSION['email'] = $email;
+                $_SESSION['userID'] = $data['id'];
+                $_SESSION['admin'] = $data['admin'];
+                $target = $_SESSION['target'];
+                logger()->info('register', [$email]);
+                logger()->info('Zugriff auf Hauptseite');
+                header('Location: /' . $target);
             }
-            $_SESSION['login_ok'] = true;
-            $_SESSION['email'] = $email;
-            $_SESSION['userID'] = $data['id'];
-            $_SESSION['admin'] = $data['admin'];
-            logger()->info('register', [$email]);
-            header('Location: /');
         }
     }
 
     public function anmeldung_verifizieren()
     {
-        if(isset($_POST['submit'])) {
+        if (isset($_POST['submit'])) {
             $email = trim($_POST['email'] ?? NULL);
             $password = filter_input(INPUT_POST, 'password');
             $admin = filter_input(INPUT_POST, 'checkadmin');
             $_SESSION['login_result_message'] = NULL;
             $passwordhash = password_hash($password, PASSWORD_BCRYPT);
             $data = getUser($email);
-            if (password_verify($password, $passwordhash)) {
+            if ($passwordhash === $data['passwort']) {
                 update_user($email, true);
                 $_SESSION['login_ok'] = true;
                 $_SESSION['email'] = $email;
                 $_SESSION['userID'] = $data['id'];
                 $_SESSION['admin'] = $data['admin'];
                 logger()->info('login', [$email]);
+                logger()->info('Zugriff auf Hauptseite');
                 header('Location: /');
             } else {
                 update_user($email, false);
@@ -72,7 +83,7 @@ class AnmeldungController
 
     public function abmeldung()
     {
-        logger()->info('logout', [$_SESSION['user']]);
+        logger()->info('logout', [$_SESSION['email']]);
         session_destroy();
         header('Location: /');
     }
