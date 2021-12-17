@@ -34,4 +34,4 @@
  </form>
 <?php $this->stopSection(); ?>
 
-<?php if (isset($_shouldextend[1])) { echo $this->runChild('Layout.layoutAnmeldung'); } ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('Layout.layoutRegistrieren'); } ?>
