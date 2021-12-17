@@ -89,7 +89,7 @@
     <ol class="Impressum">
         <li><a>(c) E-Mensa GmbH &nbsp&nbsp|&nbsp&nbsp</a></li>
         <li>
-            <a>
+            <a href="/profil">
                 @if($_SESSION['login_ok'])
                     {{$_SESSION['email']}} &nbsp&nbsp|&nbsp&nbsp
                 @endif

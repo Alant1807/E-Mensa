@@ -18,6 +18,7 @@ return array(
     '/registrieren' => 'AnmeldungController@registrieren',
     '/registrieren_verifizieren' => 'AnmeldungController@registrieren_verifizieren',
     '/abmeldung' => 'AnmeldungController@abmeldung',
+    '/profil' => 'ProfileController@profil',
 
     // Erstes Beispiel:
     '/m4_6a_queryparameter' => 'ExampleController@m4_6a_queryparameter',
