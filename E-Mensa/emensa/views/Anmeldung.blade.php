@@ -25,9 +25,15 @@
         @endif
         </div>
         <input type="checkbox" name="checkadmin"> Admin
-        <input type="submit" name="submit" value="Anmeldung">
+        @if($_SESSION["login_attempts"] > 2)
+            <div>
+                Ihr Konto ist gesperrt <input type="submit" name="reset" value="Zurücksetzen">
+            </div>
+        @else
+            <input type="submit" name="submit" value="Anmeldung">
+        @endif
         <div class="errormessage">
-        @if(isset($msg) && !isset($emptyuser) && !isset($emptypassword))
+        @if(isset($msg) && !isset($emptyuser) && !isset($emptypassword) && $_SESSION["login_attempts"] < 3)
             {{$msg}}
         @endif
         </div>

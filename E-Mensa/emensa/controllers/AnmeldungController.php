@@ -93,6 +93,7 @@ class AnmeldungController
             $_SESSION['login_result_message'] = NULL;
             $passwordhash = password_hash($password, PASSWORD_BCRYPT);
             $data = getUser($email);
+            $loginFailed = false;
             if (empty($email) && empty($password)) {
                 $_SESSION['emptyuser'] = "Bitte E-Mail eingeben";
                 $_SESSION['emptypassword'] = "Bitte Password eingeben";
@@ -103,6 +104,7 @@ class AnmeldungController
                 header('Location: /anmelden');
             } elseif (empty($password) && !empty($email)) {
                 $_SESSION['emptypassword'] = "Bitte Password eingeben";
+                $loginFailed = true;
                 header('Location: /anmelden');
             }
             if (password_verify($password, $data['passwort']) && $data['email'] == $email) {
@@ -118,12 +120,24 @@ class AnmeldungController
                 update_user($email, false);
                 logger()->warning('failed login', [$email]);
                 $_SESSION['login_result_message'] = "Benutzername oder Passwort falsch";
+                $loginFailed = true;
+                header('Location: /anmeldung');
+            }
+            if($loginFailed){
+                $_SESSION['login_attempts'] += 1;
+            }
+            if ($_SESSION["login_attempts"] > 2)
+            {
                 header('Location: /anmeldung');
             }
         } elseif (isset($_POST['back'])) {
             logger()->info('Zugriff auf Hauptseite');
             session_destroy();
             header('Location: /');
+        }
+        if($_POST['reset']){
+            session_destroy();
+            header('Location: /anmeldung');
         }
     }
 
