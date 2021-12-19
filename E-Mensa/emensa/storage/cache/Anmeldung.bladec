@@ -27,11 +27,11 @@
  <?php endif; ?>
  </div>
  <input type="checkbox" name="checkadmin"> Admin
- <?php if($_SESSION["login_attempts"] > 2): ?>
  <div>
+ <?php if($_SESSION["login_attempts"] > 2): ?>
  Ihr Konto ist gesperrt <input type="submit" name="reset" value="Zurücksetzen">
- </div>
  <?php else: ?>
+ </div>
  <input type="submit" name="submit" value="Anmeldung">
  <?php endif; ?>
  <div class="errormessage">

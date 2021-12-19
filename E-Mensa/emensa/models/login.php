@@ -70,3 +70,15 @@ function update_user($email, $success)
     mysqli_commit($link);
     mysqli_close($link);
 }
+
+function resetUser($email, $password){
+    $link = connectdb();
+    $password = mysqli_real_escape_string($link, $password);
+    mysqli_begin_transaction($link);
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement,
+        "UPDATE benutzer SET passwort = (?) WHERE email = (?)");
+    mysqli_stmt_bind_param($statement, 'ss',
+        $email, $password);
+    mysqli_stmt_execute($statement);
+}

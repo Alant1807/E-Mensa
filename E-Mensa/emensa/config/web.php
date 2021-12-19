@@ -19,6 +19,8 @@ return array(
     '/registrieren_verifizieren' => 'AnmeldungController@registrieren_verifizieren',
     '/abmeldung' => 'AnmeldungController@abmeldung',
     '/profil' => 'ProfileController@profil',
+    '/zuruecksetzen' => 'ResetController@zuruecksetzen',
+    '/reset' => 'ResetController@reset',
 
     // Erstes Beispiel:
     '/m4_6a_queryparameter' => 'ExampleController@m4_6a_queryparameter',

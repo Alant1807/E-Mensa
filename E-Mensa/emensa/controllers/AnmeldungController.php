@@ -9,7 +9,9 @@ class AnmeldungController
         $vars = ['msg' => $_SESSION['login_result_message'],
             'emptyuser' => $_SESSION['emptyuser'],
             'emptypassword' => $_SESSION['emptypassword']];
-        if (isset($_SESSION['login_result_message']) || isset($_SESSION['emptyuser']) || isset($_SESSION['emptypassword'])) {
+        if (isset($_SESSION['login_result_message']) || isset($_SESSION['emptyuser']) ||
+            isset($_SESSION['emptypassword']) || isset($_SESSION['failurepass']) ||
+            isset($_SESSION['failurerepeatpass']) || isset($_SESSION['notequalPass'])) {
             $_SESSION['login_result_message'] = NULL;
             $_SESSION['emptyuser'] = NULL;
             $_SESSION['emptypassword'] = NULL;
@@ -104,7 +106,6 @@ class AnmeldungController
                 header('Location: /anmelden');
             } elseif (empty($password) && !empty($email)) {
                 $_SESSION['emptypassword'] = "Bitte Password eingeben";
-                $loginFailed = true;
                 header('Location: /anmelden');
             }
             if (password_verify($password, $data['passwort']) && $data['email'] == $email) {
@@ -120,8 +121,11 @@ class AnmeldungController
                 update_user($email, false);
                 logger()->warning('failed login', [$email]);
                 $_SESSION['login_result_message'] = "Benutzername oder Passwort falsch";
-                $loginFailed = true;
                 header('Location: /anmeldung');
+            }
+            if(!password_verify($password, $data['passwort']) && $data['email'] == $email && !empty($email)){
+                $_SESSION['email'] = $email;
+                $loginFailed = true;
             }
             if($loginFailed){
                 $_SESSION['login_attempts'] += 1;
@@ -136,8 +140,7 @@ class AnmeldungController
             header('Location: /');
         }
         if($_POST['reset']){
-            session_destroy();
-            header('Location: /anmeldung');
+            header('Location: /zuruecksetzen');
         }
     }
 

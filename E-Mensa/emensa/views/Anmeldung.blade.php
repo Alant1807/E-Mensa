@@ -25,11 +25,11 @@
         @endif
         </div>
         <input type="checkbox" name="checkadmin"> Admin
+        <div>
         @if($_SESSION["login_attempts"] > 2)
-            <div>
                 Ihr Konto ist gesperrt <input type="submit" name="reset" value="Zurücksetzen">
-            </div>
         @else
+        </div>
             <input type="submit" name="submit" value="Anmeldung">
         @endif
         <div class="errormessage">
