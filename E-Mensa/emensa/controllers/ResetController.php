@@ -48,7 +48,7 @@ class ResetController
                     $data = getUser($_SESSION['email']);
                     $_SESSION['login_ok'] = true;
                     $_SESSION['userID'] = $data['id'];
-                    header('Location: /');
+                    header('Location: anmeldung');
                 }
                 if ($password != $repeatpass) {
                     $_SESSION['notequalPass'] = "Passwort stimmt nicht überein";

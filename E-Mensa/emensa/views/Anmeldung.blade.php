@@ -13,29 +13,29 @@
         <label for="user">E-Mail:</label>
         <input type="email" id="user" name="email">
         <div class="errormessage">
-        @if(isset($emptyuser))
-            {{$emptyuser}}
-        @endif
+            @if(isset($emptyuser))
+                {{$emptyuser}}
+            @endif
         </div>
         <label for="pass">Passwort:</label>
-        <input type="password" id="pass" name="password" >
+        <input type="password" id="pass" name="password">
         <div class="errormessage">
-        @if(isset($emptypassword))
-            {{$emptypassword}}
-        @endif
+            @if(isset($emptypassword))
+                {{$emptypassword}}
+            @endif
         </div>
         <input type="checkbox" name="checkadmin"> Admin
         <div>
-        @if($_SESSION["login_attempts"] > 2)
+            @if($_SESSION["login_attempts"] > 2)
                 Ihr Konto ist gesperrt <input type="submit" name="reset" value="Zurücksetzen">
-        @else
+            @else
+                <input type="submit" name="submit" value="Anmeldung">
+            @endif
         </div>
-            <input type="submit" name="submit" value="Anmeldung">
-        @endif
         <div class="errormessage">
-        @if(isset($msg) && !isset($emptyuser) && !isset($emptypassword) && $_SESSION["login_attempts"] < 3)
-            {{$msg}}
-        @endif
+            @if(isset($msg) && !isset($emptyuser) && !isset($emptypassword) && $_SESSION["login_attempts"] < 3)
+                {{$msg}}
+            @endif
         </div>
     </form>
 @endsection
