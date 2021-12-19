@@ -12,6 +12,8 @@
 <main id="home" class="grid-container">
     @yield('begrüßungstext')
     @yield('gerichtetabelle')
+    @yield('EmensaInZahlen')
+    @yield('Newsletter')
 </main>
 <div class="griditem4">
     <h1>Das ist uns wichtig</h1>

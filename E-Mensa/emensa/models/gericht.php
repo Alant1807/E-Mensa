@@ -25,6 +25,20 @@ function db_gericht_select_all()
 
 }
 
+function getrowsgerichte()
+{
+    $link = connectdb();
+    $sql = "SELECT name, preis_intern, preis_extern,code FROM gericht,gericht_hat_allergen 
+            ORDER BY name 
+            LIMIT 5";
+    $rowcount = 0;
+    if ($result = mysqli_query($link, $sql)) {
+        $rowcount = mysqli_num_rows($result);// Gibt die anzahl der zeilen an
+    }
+    mysqli_close($link);
+    return $rowcount;
+}
+
 function db_gericht_select_name_and_intern_price_moreThan2euro()
 {
     $link = connectdb();

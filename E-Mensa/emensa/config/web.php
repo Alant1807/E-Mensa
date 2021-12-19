@@ -21,6 +21,7 @@ return array(
     '/profil' => 'ProfileController@profil',
     '/zuruecksetzen' => 'ResetController@zuruecksetzen',
     '/reset' => 'ResetController@reset',
+    '/checkFormular' => 'WerbeSeiteController@checkFormular',
 
     // Erstes Beispiel:
     '/m4_6a_queryparameter' => 'ExampleController@m4_6a_queryparameter',

@@ -82,3 +82,16 @@ function resetUser($email, $password){
         $email, $password);
     mysqli_stmt_execute($statement);
 }
+
+function insertNewsletter($benutzername,$email,$language){
+    $link = connectdb();
+    $benutzername = mysqli_real_escape_string($link,$benutzername);
+    $email = mysqli_real_escape_string($link,$email);
+    mysqli_begin_transaction($link);
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement,"INSERT INTO newsletteranmeldungen (name,email,sprache) VALUES (?,?,?)");
+    mysqli_stmt_bind_param($statement, 'sss', $benutzername,$email,$language);
+    mysqli_stmt_execute($statement);
+    mysqli_commit($link);
+    mysqli_close($link);
+}

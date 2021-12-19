@@ -7,8 +7,8 @@
 
 if (isset($_POST['submit'])) {
     $benutzername = trim($_POST['text'] ?? NULL);
-    $benutzername = filter_input(INPUT_POST, 'text');
     $email = filter_input(INPUT_POST, 'email');
+    $language = filter_input(INPUT_POST,'language');
     $notdomains = ["rcpt.at" . "damnthespam.at", "wegwerfmail.de", "trashmail.de", "trashmail.com"];
     $iferror = false;
     $successful = false;
@@ -43,9 +43,7 @@ if (isset($_POST['submit'])) {
     }
     if ($iferror == false) {
         $noerror = "Registrierung erfolgreich";
-        $file = fopen('./Newsletter_Anmeldungen.txt', 'a');
-        fwrite($file,$_POST['text']."§".$_POST['email']."§".$_POST['language']."§".$_POST['checkbox'] . "\n");  // Newsletter-Anmeldungen werden mit seperator § gespeichert
-        fclose($file);
+
     }
     if ($successful == false) {
         $count = file_get_contents('erfolgreicheAnmeldungen.txt');  // Anzahl der Newsletter-Anmeldungen speichern

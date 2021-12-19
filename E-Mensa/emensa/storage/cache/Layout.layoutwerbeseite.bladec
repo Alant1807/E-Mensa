@@ -12,6 +12,8 @@
 <main id="home" class="grid-container">
  <?php echo $this->yieldContent('begrüßungstext'); ?>
  <?php echo $this->yieldContent('gerichtetabelle'); ?>
+ <?php echo $this->yieldContent('EmensaInZahlen'); ?>
+ <?php echo $this->yieldContent('Newsletter'); ?>
 </main>
 <div class="griditem4">
  <h1>Das ist uns wichtig</h1>

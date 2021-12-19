@@ -85,6 +85,69 @@
     </div>
 @endsection
 
+@section('EmensaInZahlen')
+    <div class="griditem griditem3 grid-container-2">
+        <h1 id="numbers" class="griditem2-1"> E-Mensa in Zahlen</h1>
+        <div class="griditem-2 griditem2-2">
+            {{$refresher}} Besuche
+        </div>
+        <div class="griditem-2 griditem2-3"><a class="br">
+                0 Newsletter
+            </a></div>
+        <div class="griditem-2 griditem2-4"> {{$getrows}} Speisen</div>
+    </div>
+@endsection
+
+@section('Newsletter')
+    <div class="uberschrift"></div>
+    <form class="griditem griditem4 grid-container-3" method="post" action="checkFormular">
+        <h1 class="griditem3-1"> Interesse geweckt? Wir informieren Sie!</h1>
+        <div class="griditem-3 griditem3-2">
+            <a class="br">Ihr Name:</a>
+            <input type="text" name="text" placeholder="Vorname">
+        </div>
+
+        <div class="griditem-3 griditem3-3">
+            <a class="br">Ihre E-Mail:</a>
+            <input type="text" name="email" placeholder="Max@Musterman.gmx.de">
+        </div>
+        <div class="griditem-3 griditem3-4">
+            <a class="br">Newsletter bitte in:</a>
+            <select name="language">
+                <option value="deutsch"> Deutsch</option>
+                <option value="englisch">Englisch</option>
+                <option value="niederländisch">Niederländisch</option>
+                <option value="Spanisch">Spanisch</option>
+            </select>
+        </div>
+        <div class="griditem-3 griditem3-5">
+            <p class="error">
+                @if(isset($benutzername_error))
+                    {{$benutzername_error}}
+                @endif
+            </p>
+            <p class="error">
+                @if(isset($email_error))
+                    {{$email_error}}
+                @endif
+            </p>
+            <input type="checkbox" name="checkbox">
+            Den Datenschutzbestimmungen Stimme ich zu
+            <input type="submit" name="submit" value="Zum Newsletter anmelden" class="br post">
+            <p class="error">
+                @if(isset($checkbox_error))
+                    {{$checkbox_error}}
+                @endif
+            </p>
+            <p>
+                @if(isset($noerror))
+                    {{$noerror}}
+                @endif
+            </p>
+        </div>
+    </form>
+@endsection
+
 @section('impressum')
     <ol class="Impressum">
         <li><a>(c) E-Mensa GmbH &nbsp&nbsp|&nbsp&nbsp</a></li>
