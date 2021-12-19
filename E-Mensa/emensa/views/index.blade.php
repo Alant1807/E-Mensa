@@ -92,7 +92,7 @@
             {{$refresher}} Besuche
         </div>
         <div class="griditem-2 griditem2-3"><a class="br">
-                0 Newsletter
+                {{$newsletteranmeldungen}} Newsletter
             </a></div>
         <div class="griditem-2 griditem2-4"> {{$getrows}} Speisen</div>
     </div>
