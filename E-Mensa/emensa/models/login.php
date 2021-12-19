@@ -95,3 +95,19 @@ function insertNewsletter($benutzername,$email,$language){
     mysqli_commit($link);
     mysqli_close($link);
 }
+
+function getNewsletteruser($email){
+    $link = connectdb();
+    $email = mysqli_real_escape_string($link,$email);
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement,
+        "SELECT * FROM newsletteranmeldungen WHERE email = (?)");
+    mysqli_stmt_bind_param($statement, 's',
+        $email);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $data = mysqli_fetch_array($result);
+    mysqli_free_result($result);
+    mysqli_close($link);
+    return $data;
+}

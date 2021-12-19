@@ -129,6 +129,8 @@
             <p class="error">
                 @if(isset($email_error))
                     {{$email_error}}
+                @elseif(isset($existemail))
+                    {{$existemail}}
                 @endif
             </p>
             <input type="checkbox" name="checkbox">

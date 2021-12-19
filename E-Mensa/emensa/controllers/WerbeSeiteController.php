@@ -20,14 +20,16 @@ class WerbeSeiteController
             'email_error' => $_SESSION['email_error'],
             'checkbox_error' => $_SESSION['checkbox_error'],
             'noerror' => $_SESSION['noerror'],
-            'newsletteranmeldungen' => $_SESSION['newsletteranmeldungen']
+            'newsletteranmeldungen' => $_SESSION['newsletteranmeldungen'],
+            'existemail' => $_SESSION['existemail']
         ];
         if(isset($_SESSION['benutzername_error']) || isset($_SESSION['email_error']) ||
-            isset($_SESSION['checkbox_error']) || isset($_SESSION['noerror'])){
+            isset($_SESSION['checkbox_error']) || isset($_SESSION['noerror']) || isset($_SESSION['existemail'])){
             $_SESSION['benutzername_error'] = NULL;
             $_SESSION['email_error'] = NULL;
             $_SESSION['checkbox_error'] = NULL;
             $_SESSION['noerror'] = NULL;
+            $_SESSION['existemail'] = NULL;
         }
         $_SESSION['target'] = "";
         logger()->info('Zugriff auf Hauptseite');
@@ -42,6 +44,7 @@ class WerbeSeiteController
         $_SESSION['newsletteranmeldungen'] = 0;
         $iferror = false;
         $successful = true;
+        $data = getNewsletteruser($email);
         if (empty($benutzername)) {    // wenn benutzer nicht eingetragen
             $_SESSION['benutzername_error'] = "Bitte Benutzername eintragen";
             $iferror = true;
@@ -64,6 +67,11 @@ class WerbeSeiteController
                 $iferror = true;
                 $successful = false;
             }
+        }
+        if($email == $data['email']){
+            $_SESSION['existemail'] = "E-Mail ist schon vergeben";
+            $iferror = true;
+            $successful = false;
         }
         if (!isset($_POST['checkbox'])) {  // wenn Datenschutzbestimmung nicht gesetzt ist
             $_SESSION['checkbox_error'] = "Bitte Stimmen Sie der Datenschutzbestimmung zu";
