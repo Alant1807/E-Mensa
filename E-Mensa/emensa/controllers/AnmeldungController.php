@@ -9,11 +9,13 @@ class AnmeldungController
         $vars = ['msg' => $_SESSION['login_result_message'],
             'emptyuser' => $_SESSION['emptyuser'],
             'emptypassword' => $_SESSION['emptypassword'],
-            'failedlogin' => $_SESSION['failedlogin']];
-        if (isset($_SESSION['login_result_message']) || isset($_SESSION['emptyuser']) || isset($_SESSION['emptypassword'])) {
+            'failedlogin' => $_SESSION['failedlogin'],
+            'login_fail_admin' => $_SESSION['login_fail_admin']];
+        if (isset($_SESSION['login_result_message']) || isset($_SESSION['emptyuser']) || isset($_SESSION['emptypassword']) || isset($_SESSION['login_fail_admin'])) {
             $_SESSION['login_result_message'] = NULL;
             $_SESSION['emptyuser'] = NULL;
             $_SESSION['emptypassword'] = NULL;
+            $_SESSION['login_fail_admin'] = NULL;
         }
         return view('Anmeldung', $vars);
     }
@@ -59,7 +61,7 @@ class AnmeldungController
                 $_SESSION['existUser'] = "E-Mail ist schon vergeben";
                 $_SESSION['failedregister'] = true;
             }
-            if($_SESSION['failedregister'] == true){
+            if ($_SESSION['failedregister'] == true) {
                 header('Location: /registrieren');
             }
             if (isset($_POST['checkadmin']) && $data['email'] != $email && !empty($password)) {
@@ -113,7 +115,7 @@ class AnmeldungController
                 $_SESSION['emptypassword'] = "Bitte Password eingeben";
                 $_SESSION['failedlogin'] = true;
             }
-            if (password_verify($password, $data['passwort']) && $data['email'] == $email) {
+            if (password_verify($password, $data['passwort']) && $data['email'] == $email && $data['admin'] == $admin) {
                 update_user($email, true);
                 $_SESSION['login_ok'] = true;
                 $_SESSION['email'] = $email;
@@ -127,13 +129,21 @@ class AnmeldungController
                 logger()->warning('failed login', [$email]);
                 $_SESSION['login_result_message'] = "Benutzername oder Passwort falsch";
                 $_SESSION['failedlogin'] = true;
+            } elseif ($data['admin'] != $admin) {
+                if ($data['admin'] != ($admin == 0)) {
+                    $_SESSION['login_fail_admin'] = "Sie müssen sich als Admin anmelden";
+                    $_SESSION['failedlogin'] = true;
+                } elseif ($data['admin'] != ($admin == 1)) {
+                    $_SESSION['login_fail_admin'] = "Sie dürfen sich nicht als Admin anmelden";
+                    $_SESSION['failedlogin'] = true;
+                }
             }
             if (!password_verify($password, $data['passwort']) && $data['email'] == $email && !empty($email)) {
                 $_SESSION['email'] = $email;
                 $_SESSION['failedlogin'] = true;
                 $loginFailed = true;
             }
-            if($_SESSION['failedlogin'] == true){
+            if ($_SESSION['failedlogin'] == true) {
                 header('Location: /anmeldung');
             }
             if ($loginFailed) {
@@ -142,11 +152,13 @@ class AnmeldungController
             if ($_SESSION["login_attempts"] > 2) {
                 header('Location: /anmeldung');
             }
+
         } elseif (isset($_POST['back'])) {
             logger()->info('Zugriff auf Hauptseite');
             session_destroy();
             header('Location: /');
         }
+
         if ($_POST['reset']) {
             header('Location: /zuruecksetzen');
         }
@@ -158,5 +170,4 @@ class AnmeldungController
         session_destroy();
         header('Location: /');
     }
-
 }

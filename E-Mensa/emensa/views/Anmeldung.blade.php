@@ -35,6 +35,8 @@
         <div class="errormessage">
             @if(isset($msg) && !isset($emptyuser) && !isset($emptypassword) && $_SESSION["login_attempts"] < 3)
                 {{$msg}}
+            @elseif(isset($login_fail_admin))
+                <div>{{$login_fail_admin}}</div>
             @endif
         </div>
     </form>
