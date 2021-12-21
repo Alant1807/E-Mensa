@@ -20,9 +20,24 @@ function insertUser($email, $password, $withadmin)
     mysqli_close($link);
 }
 
+function insertcode($email, $code)
+{
+    $link = connectdb();
+    $email = mysqli_real_escape_string($link, $email);
+    $code = mysqli_real_escape_string($link, $code);
+    mysqli_begin_transaction($link);
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement, "INSERT INTO benutzercode(email, code) VALUES (?,?)");
+    mysqli_stmt_bind_param($statement, 'ss', $email, $code);
+    mysqli_stmt_execute($statement);
+    mysqli_commit($link);
+    mysqli_close($link);
+}
+
 function getUser($user)
 {
     $link = connectdb();
+    $user = mysqli_real_escape_string($link, $user);
     $statement = mysqli_stmt_init($link);
     mysqli_stmt_prepare($statement, "SELECT * FROM benutzer WHERE email = (?)");
     mysqli_stmt_bind_param($statement, 's', $user);
@@ -32,7 +47,21 @@ function getUser($user)
     mysqli_free_result($result);
     mysqli_close($link);
     return $data;
+}
 
+function getUserCode($email)
+{
+    $link = connectdb();
+    $email = mysqli_real_escape_string($link, $email);
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement, "SELECT * FROM benutzercode WHERE email = (?)");
+    mysqli_stmt_bind_param($statement, 's', $email);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $data = mysqli_fetch_array($result);
+    mysqli_free_result($result);
+    mysqli_close($link);
+    return $data;
 }
 
 function update_user($email, $success)

@@ -22,6 +22,10 @@ return array(
     '/zuruecksetzen' => 'ResetController@zuruecksetzen',
     '/reset' => 'ResetController@reset',
     '/checkFormular' => 'WerbeSeiteController@checkFormular',
+    '/code' => 'AnmeldungController@code',
+    '/entercode' => 'AnmeldungController@entercode',
+    '/resetKontowithCode' => 'ResetController@resetKontowithCode',
+    '/checkCode' => 'ResetController@checkCode',
 
     // Erstes Beispiel:
     '/m4_6a_queryparameter' => 'ExampleController@m4_6a_queryparameter',

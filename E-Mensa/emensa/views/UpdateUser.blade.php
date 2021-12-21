@@ -11,7 +11,7 @@
 @section('form')
     <form action="reset" method="POST">
         <label for="email">E-Mail:</label>
-        <input type="email" name="email" id="user">
+        <input type="email" name="email" id="email">
         <div class="errormessage">
         @if(isset($fail_email))
             {{$fail_email}}

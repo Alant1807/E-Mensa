@@ -21,6 +21,14 @@ class AnmeldungController
         return view('Anmeldung', $vars);
     }
 
+    public function entercode(){
+        $vars = ['emptycode' => $_SESSION['emptycode']];
+        if (isset($_SESSION['emptycode'])){
+            $_SESSION['emptycode'] = NULL;
+        }
+        return view('AnmeldenMitCode', $vars);
+    }
+
     public function registrieren()
     {
         $vars = ['existUser' => $_SESSION['existUser'],
@@ -43,8 +51,16 @@ class AnmeldungController
             $admin = filter_input(INPUT_POST, 'checkadmin');
             $_SESSION['existUser'] = NULL;
             $_SESSION['failedregister'] = false;
+            $_SESSION['email'] = NULL;
+            $_SESSION['password'] = NULL;
+            $_SESSION['admin'] = NULL;
             $passwordhash = password_hash($password, PASSWORD_BCRYPT);
             $data = getUser($email);
+            if ($admin == "on") {
+                $admin = 1;
+            } elseif ($admin == NULL) {
+                $admin = 0;
+            }
             if (empty($email) && empty($password)) {
                 $_SESSION['emptyuser'] = "Bitte E-Mail eingeben";
                 $_SESSION['emptypassword'] = "Bitte Password eingeben";
@@ -58,38 +74,58 @@ class AnmeldungController
                 $_SESSION['failedregister'] = true;
             }
             if ($data['email'] == $email && !empty($email)) {
-                logger()->warning('failed registration', [$email]);
                 $_SESSION['existUser'] = "E-Mail ist schon vergeben";
                 $_SESSION['failedregister'] = true;
             }
             if ($_SESSION['failedregister'] == true) {
+                logger()->warning('failed registration', [$email]);
                 header('Location: /registrieren');
             }
-            if (isset($_POST['checkadmin']) && $data['email'] != $email && !empty($password)) {
-                insertUser($email, $passwordhash, true);
+            if ($admin == 1 && $data['email'] != $email && !empty($password)) {
                 $_SESSION['login_ok'] = true;
                 $_SESSION['email'] = $email;
-                $_SESSION['userID'] = $data['id'];
-                $_SESSION['admin'] = $data['admin'];
-                $target = $_SESSION['target'];
-                logger()->info('register', [$email]);
-                logger()->info('Zugriff auf Hauptseite');
-                header('Location: /' . $target);
-            } else if (!isset($_POST['checkadmin']) && $data['email'] != $email && !empty($password)) {
-                insertUser($email, $passwordhash, false);
-                $_SESSION['login_ok'] = true;
+                $_SESSION['password'] = $passwordhash;
+                $_SESSION['admin'] = $admin;
+                header('Location: /entercode');
+            } else if ($admin == 0 && $data['email'] != $email && !empty($password)) {
+                $_SESSION['admin'] = $admin;
                 $_SESSION['email'] = $email;
-                $_SESSION['userID'] = $data['id'];
-                $_SESSION['admin'] = $data['admin'];
-                $target = $_SESSION['target'];
-                logger()->info('register', [$email]);
-                logger()->info('Zugriff auf Hauptseite');
-                header('Location: /' . $target);
+                $_SESSION['password'] = $passwordhash;
+                $_SESSION['login_ok'] = true;
+                header('Location: /entercode');
             }
         } elseif ($_POST['back']) {
             logger()->info('Zugriff auf Hauptseite');
             session_destroy();
             header('Location: /');
+        }
+    }
+
+    public function code()
+    {
+        if(isset($_POST['submitcode'])) {
+            $code = trim($_POST['code'] ?? NULL);
+            $hash_code = password_hash($code,PASSWORD_BCRYPT);
+            $_SESSION['emptycode'] = NULL;
+            if(!empty($code)) {
+                if ($_SESSION['admin'] == 1) {
+                    insertUser($_SESSION['email'], $_SESSION['password'], true);
+                    insertcode($_SESSION['email'], $hash_code);
+                    logger()->info('sucessfull register', [$_SESSION['email']]);
+                    logger()->info('Zugriff auf Hauptseite');
+                    header('Location: /');
+                } elseif ($_SESSION['admin'] == 0) {
+                    insertUser($_SESSION['email'], $_SESSION['password'], false);
+                    insertcode($_SESSION['email'], $hash_code);
+                    logger()->info('sucessfull register', [$_SESSION['email']]);
+                    logger()->info('Zugriff auf Hauptseite');
+                    header('Location: /');
+                }
+            }else{
+                $_SESSION['emptycode'] = "Bitte geben Sie Ihren Code an";
+                logger()->warning('failed registration', [$_SESSION['email']]);
+                header('Location: /entercode');
+            }
         }
     }
 
