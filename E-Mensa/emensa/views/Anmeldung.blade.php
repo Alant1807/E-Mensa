@@ -38,6 +38,5 @@
         @if(isset($login_fail_admin) && $_SESSION["login_attempts"] < 3)
             <div class="errormessage">{{$login_fail_admin}}</div>
         @endif
-        {{$_SESSION['email']}}
     </form>
 @endsection

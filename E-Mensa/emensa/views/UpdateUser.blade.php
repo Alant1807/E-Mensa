@@ -10,7 +10,13 @@
 
 @section('form')
     <form action="reset" method="POST">
-        {{$_SESSION['email']}}
+        <label for="email">E-Mail:</label>
+        <input type="email" name="email" id="user">
+        @if(isset($fail_email))
+            {{$fail_email}}
+        @elseif(isset($notequalMail))
+            {{$notequalMail}}
+        @endif
         <label for="pass">Passwort:</label>
         <input type="password" id="pass" name="password">
         <div class="errormessage">

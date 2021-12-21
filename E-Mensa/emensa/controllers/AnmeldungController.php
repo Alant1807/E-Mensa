@@ -95,8 +95,8 @@ class AnmeldungController
 
     public function anmeldung_verifizieren()
     {
-        $email = trim($_POST['email'] ?? NULL);
         if (isset($_POST['submit'])) {
+            $email = trim($_POST['email'] ?? NULL);
             $password = filter_input(INPUT_POST, 'password');
             $admin = filter_input(INPUT_POST, 'checkadmin');
             $_SESSION['login_result_message'] = NULL;
@@ -161,7 +161,6 @@ class AnmeldungController
             }
         }
         if ($_POST['reset']) {
-            $_SESSION['email'] = $email;
             header('Location: /zuruecksetzen');
         }
     }
