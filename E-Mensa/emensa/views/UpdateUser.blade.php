@@ -12,11 +12,13 @@
     <form action="reset" method="POST">
         <label for="email">E-Mail:</label>
         <input type="email" name="email" id="user">
+        <div class="errormessage">
         @if(isset($fail_email))
             {{$fail_email}}
         @elseif(isset($notequalMail))
             {{$notequalMail}}
         @endif
+        </div>
         <label for="pass">Passwort:</label>
         <input type="password" id="pass" name="password">
         <div class="errormessage">
