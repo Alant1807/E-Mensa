@@ -103,6 +103,11 @@ class AnmeldungController
             $data = getUser($email);
             $loginFailed = false;
             $_SESSION['failedlogin'] = false;
+            if($admin == "on"){
+                $admin = 1;
+            }elseif ($admin == NULL){
+                $admin = 0;
+            }
             if (empty($email) && empty($password)) {
                 $_SESSION['emptyuser'] = "Bitte E-Mail eingeben";
                 $_SESSION['emptypassword'] = "Bitte Password eingeben";
@@ -130,10 +135,10 @@ class AnmeldungController
                 $_SESSION['login_result_message'] = "Benutzername oder Passwort falsch";
                 $_SESSION['failedlogin'] = true;
             } elseif ($data['admin'] != $admin) {
-                if ($data['admin'] != ($admin == 0)) {
+                if ($data['admin'] != ($admin == 1)) {
                     $_SESSION['login_fail_admin'] = "Sie müssen sich als Admin anmelden";
                     $_SESSION['failedlogin'] = true;
-                } elseif ($data['admin'] != ($admin == 1)) {
+                } elseif ($data['admin'] != ($admin == 0)) {
                     $_SESSION['login_fail_admin'] = "Sie dürfen sich nicht als Admin anmelden";
                     $_SESSION['failedlogin'] = true;
                 }

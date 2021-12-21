@@ -9,9 +9,11 @@ if (isset($_POST['submit'])) {
     $benutzername = trim($_POST['text'] ?? NULL);
     $email = filter_input(INPUT_POST, 'email');
     $language = filter_input(INPUT_POST,'language');
+    $admin = $_POST['checkbox'];
     $notdomains = ["rcpt.at" . "damnthespam.at", "wegwerfmail.de", "trashmail.de", "trashmail.com"];
     $iferror = false;
     $successful = false;
+    var_dump($admin);
     if (empty($benutzername)) {    // wenn benutzer nicht eingetragen
         $benutzername_error = "Bitte Benutzername eintragen";
         $iferror = true;
