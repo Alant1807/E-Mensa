@@ -32,12 +32,12 @@
                 <input type="submit" name="submit" value="Anmeldung">
             @endif
         </div>
-        <div class="errormessage">
-            @if(isset($msg) && !isset($emptyuser) && !isset($emptypassword) && $_SESSION["login_attempts"] < 3)
-                {{$msg}}
-            @elseif(isset($login_fail_admin))
-                <div>{{$login_fail_admin}}</div>
-            @endif
-        </div>
+        @if(isset($msg) && !isset($emptyuser) && !isset($emptypassword) && $_SESSION["login_attempts"] < 3)
+            <div class="errormessage">{{$msg}}</div>
+        @endif
+        @if(isset($login_fail_admin) && $_SESSION["login_attempts"] < 3)
+            <div class="errormessage">{{$login_fail_admin}}</div>
+        @endif
+        {{$_SESSION['email']}}
     </form>
 @endsection

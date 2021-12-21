@@ -9,7 +9,8 @@ class ResetController
         $vars = ['failurepass' => $_SESSION['failurepass'],
             'failurerepeatpass' => $_SESSION['failurerepeatpass'],
             'notequalPass' => $_SESSION['notequalPass']];
-        if (isset($_SESSION['failurepass']) || isset($_SESSION['failurerepeatpass']) || isset($_SESSION['notequalPass'])) {
+        if (isset($_SESSION['failurepass']) || isset($_SESSION['failurerepeatpass'])
+            || isset($_SESSION['notequalPass'])) {
             $_SESSION['failurepass'] = NULL;
             $_SESSION['failurerepeatpass'] = NULL;
             $_SESSION['notequalPass'] = NULL;
@@ -45,10 +46,8 @@ class ResetController
             if (!empty($password) && !empty($repeatpass)) {
                 if ($password == $repeatpass) {
                     resetUser($_SESSION['email'], $password_hash);
-                    $data = getUser($_SESSION['email']);
-                    $_SESSION['login_ok'] = true;
-                    $_SESSION['userID'] = $data['id'];
-                    header('Location: anmeldung');
+                    $_SESSION['login_attempts'] = NULL;
+                    header('Location: /anmeldung');
                 }
                 if ($password != $repeatpass) {
                     $_SESSION['notequalPass'] = "Passwort stimmt nicht überein";

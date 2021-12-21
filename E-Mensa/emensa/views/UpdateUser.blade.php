@@ -10,6 +10,7 @@
 
 @section('form')
     <form action="reset" method="POST">
+        {{$_SESSION['email']}}
         <label for="pass">Passwort:</label>
         <input type="password" id="pass" name="password">
         <div class="errormessage">
