@@ -72,12 +72,12 @@ function update_user($email, $success)
     $statement = mysqli_stmt_init($link);
     if ($success) {
         mysqli_stmt_prepare($statement,
-            "UPDATE benutzer SET anzahlanmeldungen = anzahlanmeldungen + 1 WHERE email = (?)");
+            "CALL AnmeldeCounter(?)");
         mysqli_stmt_bind_param($statement, 's', $email);
         mysqli_stmt_execute($statement);
         mysqli_stmt_prepare($statement, "UPDATE benutzer SET letzteanmeldung = NOW() WHERE email = (?);");
     } else {
-        mysqli_stmt_prepare($statement, "UPDATE benutzer SET anzahlfehler = anzahlfehler + 1 WHERE email = (?)");
+        mysqli_stmt_prepare($statement, "CALL AnzahlfehlerCounter(?)");
         mysqli_stmt_bind_param($statement, 's', $email);
         mysqli_stmt_execute($statement);
         mysqli_stmt_prepare($statement, "UPDATE benutzer SET letzterfehler = NOW() WHERE email = (?);");
