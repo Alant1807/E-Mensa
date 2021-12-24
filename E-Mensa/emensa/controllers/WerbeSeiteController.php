@@ -32,7 +32,11 @@ class WerbeSeiteController
             $_SESSION['existemail'] = NULL;
         }
         $_SESSION['target'] = "";
-        logger()->info('Zugriff auf Hauptseite');
+        if($_SESSION['login_ok']){
+            logger()->info('Zugriff auf Hauptseite', [$_SESSION['email']]);
+        }else{
+            logger()->info('Zugriff auf Hauptseite ohne Anmeldung/Registrierung');
+        }
         return view('index', $vars);
     }
 

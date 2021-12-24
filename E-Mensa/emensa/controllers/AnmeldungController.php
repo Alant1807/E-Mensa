@@ -112,13 +112,11 @@ class AnmeldungController
                     insertUser($_SESSION['email'], $_SESSION['password'], true);
                     insertcode($_SESSION['email'], $hash_code);
                     logger()->info('sucessfull register', [$_SESSION['email']]);
-                    logger()->info('Zugriff auf Hauptseite');
                     header('Location: /');
                 } elseif ($_SESSION['admin'] == 0) {
                     insertUser($_SESSION['email'], $_SESSION['password'], false);
                     insertcode($_SESSION['email'], $hash_code);
                     logger()->info('sucessfull register', [$_SESSION['email']]);
-                    logger()->info('Zugriff auf Hauptseite');
                     header('Location: /');
                 }
             }else{
@@ -164,7 +162,6 @@ class AnmeldungController
                 $_SESSION['userID'] = $data['id'];
                 $_SESSION['admin'] = $data['admin'];
                 logger()->info('login', [$email]);
-                logger()->info('Zugriff auf Hauptseite');
                 header('Location: /');
             } elseif (!password_verify($password, $data['passwort']) || $data['email'] != $email) {
                 logger()->warning('failed login', [$email]);
