@@ -6,13 +6,9 @@
     <link rel="stylesheet" href="/CSS/ResetMitCode.css">
 </head>
 <body>
-<div class="container">
-    <header>
+<div class="resetmitcode">
         <h3>@yield('title')</h3>
-    </header>
-    <main>
         @yield('form')
-    </main>
     <footer>
     </footer>
 </div>

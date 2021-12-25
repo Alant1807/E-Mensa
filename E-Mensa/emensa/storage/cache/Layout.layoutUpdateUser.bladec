@@ -6,13 +6,9 @@
  <link rel="stylesheet" href="/CSS/UpdateUser.css">
 </head>
 <body>
-<div class="container">
- <header>
+<div class="updateuser">
  <h3><?php echo $this->yieldContent('title'); ?></h3>
- </header>
- <main>
  <?php echo $this->yieldContent('form'); ?>
- </main>
  <footer>
  </footer>
 </div>

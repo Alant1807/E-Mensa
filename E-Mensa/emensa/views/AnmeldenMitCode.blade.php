@@ -13,12 +13,12 @@
         <label for="code">
             Geben Sie Ihren persönlichen Code, den sie zur Wiederherstellung Ihres Kontos verwenden werden
         </label>
-        <input type="text" id="code" name="code">
+        <p><input type="text" id="code" name="code"></p>
         <div class="errormessage">
             @if(isset($emptycode))
                 {{$emptycode}}
             @endif
         </div>
-        <input type="submit" name="submitcode" value="Registrieren">
+        <p class="submit"><input type="submit" name="submitcode" value="Registrieren"></p>
     </form>
 @endsection

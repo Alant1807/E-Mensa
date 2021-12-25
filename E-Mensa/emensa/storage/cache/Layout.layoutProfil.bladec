@@ -3,15 +3,12 @@
 <head>
  <meta charset="UTF-8">
  <title><?php echo $this->yieldContent('bartitle'); ?></title>
+ <link rel="stylesheet" href="/CSS/profile.css">
 </head>
 <body>
-<div class="container">
- <header>
+<div class="profile">
  <h3><?php echo $this->yieldContent('title'); ?></h3>
- </header>
- <main>
  <?php echo $this->yieldContent('content'); ?>
- </main>
  <footer>
  </footer>
 </div>

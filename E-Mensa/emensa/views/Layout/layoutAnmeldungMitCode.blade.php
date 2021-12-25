@@ -6,13 +6,9 @@
     <link rel="stylesheet" href="/CSS/AnmeldenMitCode.css">
 </head>
 <body>
-<div class="container">
-    <header>
-        <h3>@yield('title')</h3>
-    </header>
-    <main>
-        @yield('form')
-    </main>
+<div class="resetmitcode">
+    <h3>@yield('title')</h3>
+    @yield('form')
     <footer>
     </footer>
 </div>

@@ -10,21 +10,21 @@
 
 @section('content')
     <form action="profil" method="post">
-        <div>
+        <p id="email">
             E-Mail: {{$userinfo['email']}}
-        </div>
-        <div>
+        </p>
+        <p id="countlogins">
             Anzahl an Anmeldungen: {{$userinfo['anzahlanmeldungen']}}
-        </div>
-        <div>
+        </p>
+        <p id="admin">
             @if($userinfo['admin'] == 1)
                 Admin
             @else
                 kein Admin
             @endif
-        </div>
-        <div>
+        </p>
+        <p class="submit">
             <input type="submit" name="zurueck" value="Hauptseite">
-        </div>
+        </p>
     </form>
 @endsection

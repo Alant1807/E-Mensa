@@ -10,8 +10,7 @@
 
 @section('form')
     <form action="reset" method="POST">
-        <label for="email">E-Mail:</label>
-        <input type="email" name="email" id="email">
+        <p><input type="email" placeholder="E-Mail" name="email"></p>
         <div class="errormessage">
         @if(isset($fail_email))
             {{$fail_email}}
@@ -19,15 +18,13 @@
             {{$notequalMail}}
         @endif
         </div>
-        <label for="pass">Passwort:</label>
-        <input type="password" id="pass" name="password">
+        <p><input type="password" placeholder="Passwort" name="password"></p>
         <div class="errormessage">
         @if(isset($failurepass))
             {{$failurepass}}
         @endif
         </div>
-        <label for="repeatpass">Passwort wiederholen:</label>
-        <input type="password" id="repeatpass" name="repeatpass">
+        <p><input type="password" placeholder="Passwort wiederholen" id="repeatpass" name="repeatpass"></p>
         <div class="errormessage">
             @if(isset($failurerepeatpass))
                 {{$failurerepeatpass}}
@@ -35,6 +32,6 @@
                 {{$notequalPass}}
             @endif
         </div>
-        <input type="submit" name="submit" value="Konto zurücksetzen">
+        <p class="submit"><input type="submit" name="submit" value="Konto zurücksetzen"></p>
     </form>
 @endsection

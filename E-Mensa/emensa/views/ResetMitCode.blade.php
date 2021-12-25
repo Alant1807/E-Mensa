@@ -13,7 +13,7 @@
         <label for="code">
             Geben Sie Ihren persönlichen Code, zur Wiederherstellung Ihres Kontos
         </label>
-        <input type="text" id="code" name="code">
+        <p><input type="text" id="code" name="code"></p>
         <div class="errormessage">
             @if(isset($emptycode))
                 {{$emptycode}}
@@ -21,6 +21,6 @@
                 {{$falsecode}}
             @endif
         </div>
-        <input type="submit" name="submitcode" value="Zurücksetzen">
+        <p class="submit"><input type="submit" name="submitcode" value="Zurücksetzen"></p>
     </form>
 @endsection

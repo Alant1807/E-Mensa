@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('bartitle')</title>
+    <link rel="stylesheet" href="/CSS/profile.css">
 </head>
 <body>
-<div class="container">
-    <header>
-        <h3>@yield('title')</h3>
-    </header>
-    <main>
-        @yield('content')
-    </main>
+<div class="profile">
+    <h3>@yield('title')</h3>
+    @yield('content')
     <footer>
     </footer>
 </div>
