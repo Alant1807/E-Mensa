@@ -45,10 +45,9 @@ class ResetController
                 $_SESSION['emptycode'] = "Bitte geben sie Ihren Code ein";
                 header('Location: /resetKontowithCode');
             } else {
-                if (password_verify($code,$data['code'])) {
+                if (password_verify($code, $data['code'])) {
                     header('Location: /anmeldung');
-                }
-                elseif (!password_verify($code,$data['code'])) {
+                } elseif (!password_verify($code, $data['code'])) {
                     $_SESSION['falsecode'] = "Der Code stimmt mit Ihren nicht überein";
                     header('Location: /resetKontowithCode');
                 }
