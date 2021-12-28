@@ -21,9 +21,10 @@ class AnmeldungController
         return view('Anmeldung', $vars);
     }
 
-    public function entercode(){
+    public function entercode()
+    {
         $vars = ['emptycode' => $_SESSION['emptycode']];
-        if (isset($_SESSION['emptycode'])){
+        if (isset($_SESSION['emptycode'])) {
             $_SESSION['emptycode'] = NULL;
         }
         return view('AnmeldenMitCode', $vars);
@@ -103,11 +104,11 @@ class AnmeldungController
 
     public function code()
     {
-        if(isset($_POST['submitcode'])) {
+        if (isset($_POST['submitcode'])) {
             $code = trim($_POST['code'] ?? NULL);
-            $hash_code = password_hash($code,PASSWORD_BCRYPT);
+            $hash_code = password_hash($code, PASSWORD_BCRYPT);
             $_SESSION['emptycode'] = NULL;
-            if(!empty($code)) {
+            if (!empty($code)) {
                 if ($_SESSION['admin'] == 1) {
                     insertUser($_SESSION['email'], $_SESSION['password'], true);
                     insertcode($_SESSION['email'], $hash_code);
@@ -119,7 +120,7 @@ class AnmeldungController
                     logger()->info('sucessfull register', [$_SESSION['email']]);
                     header('Location: /');
                 }
-            }else{
+            } else {
                 $_SESSION['emptycode'] = "Bitte geben Sie Ihren Code an";
                 logger()->warning('failed registration', [$_SESSION['email']]);
                 header('Location: /entercode');
