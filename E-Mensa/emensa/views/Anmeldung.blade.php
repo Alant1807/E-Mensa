@@ -12,13 +12,13 @@
     <form action="anmeldung_verifizieren" method="POST">
         <p><input type="email" placeholder="E-Mail" name="email"></p>
         <div class="errormessage">
-            @if(isset($emptyuser))
+            @if(isset($emptyuser) && $_SESSION["login_attempts"] < 3)
                 {{$emptyuser}}
             @endif
         </div>
         <p><input type="password" placeholder="Passwort" name="password"></p>
         <div class="errormessage">
-            @if(isset($emptypassword))
+            @if(isset($emptypassword) && $_SESSION["login_attempts"] < 3)
                 {{$emptypassword}}
             @endif
         </div>

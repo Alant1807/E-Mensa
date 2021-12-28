@@ -168,7 +168,7 @@ class AnmeldungController
                 $_SESSION['login_result_message'] = "Benutzername oder Passwort falsch";
                 $_SESSION['failedlogin'] = true;
             }
-            if (!password_verify($password, $data['passwort']) && $data['email'] == $email && !empty($email)) {
+            if (!password_verify($password, $data['passwort']) && $data['email'] == $email && !empty($email) && $data['admin'] != 1) {
                 $_SESSION['email'] = $email;
                 $_SESSION['failedlogin'] = true;
                 $loginFailed = true;
