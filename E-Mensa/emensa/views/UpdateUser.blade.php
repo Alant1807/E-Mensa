@@ -12,17 +12,17 @@
     <form action="reset" method="POST">
         <p><input type="email" placeholder="E-Mail" name="email"></p>
         <div class="errormessage">
-        @if(isset($fail_email))
-            {{$fail_email}}
-        @elseif(isset($notequalMail))
-            {{$notequalMail}}
-        @endif
+            @if(isset($fail_email))
+                {{$fail_email}}
+            @elseif(isset($notequalMail))
+                {{$notequalMail}}
+            @endif
         </div>
         <p><input type="password" placeholder="Passwort" name="password"></p>
         <div class="errormessage">
-        @if(isset($failurepass))
-            {{$failurepass}}
-        @endif
+            @if(isset($failurepass))
+                {{$failurepass}}
+            @endif
         </div>
         <p><input type="password" placeholder="Passwort wiederholen" id="repeatpass" name="repeatpass"></p>
         <div class="errormessage">

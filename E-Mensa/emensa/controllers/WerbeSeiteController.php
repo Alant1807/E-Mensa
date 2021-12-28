@@ -23,8 +23,8 @@ class WerbeSeiteController
             'newsletteranmeldungen' => $_SESSION['newsletteranmeldungen'],
             'existemail' => $_SESSION['existemail']
         ];
-        if(isset($_SESSION['benutzername_error']) || isset($_SESSION['email_error']) ||
-            isset($_SESSION['checkbox_error']) || isset($_SESSION['noerror']) || isset($_SESSION['existemail'])){
+        if (isset($_SESSION['benutzername_error']) || isset($_SESSION['email_error']) ||
+            isset($_SESSION['checkbox_error']) || isset($_SESSION['noerror']) || isset($_SESSION['existemail'])) {
             $_SESSION['benutzername_error'] = NULL;
             $_SESSION['email_error'] = NULL;
             $_SESSION['checkbox_error'] = NULL;
@@ -32,18 +32,19 @@ class WerbeSeiteController
             $_SESSION['existemail'] = NULL;
         }
         $_SESSION['target'] = "";
-        if($_SESSION['login_ok']){
+        if ($_SESSION['login_ok']) {
             logger()->info('Zugriff auf Hauptseite', [$_SESSION['email']]);
-        }else{
+        } else {
             logger()->info('Zugriff auf Hauptseite ohne Anmeldung/Registrierung');
         }
         return view('index', $vars);
     }
 
-    public function checkFormular(){
+    public function checkFormular()
+    {
         $benutzername = trim($_POST['text'] ?? NULL);
         $email = filter_input(INPUT_POST, 'email');
-        $language = filter_input(INPUT_POST,'language');
+        $language = filter_input(INPUT_POST, 'language');
         $notdomains = ["rcpt.at" . "damnthespam.at", "wegwerfmail.de", "trashmail.de", "trashmail.com"];
         $_SESSION['newsletteranmeldungen'] = 0;
         $iferror = false;
@@ -72,7 +73,7 @@ class WerbeSeiteController
                 $successful = false;
             }
         }
-        if($email == $data['email']){
+        if ($email == $data['email']) {
             $_SESSION['existemail'] = "E-Mail ist schon vergeben";
             $iferror = true;
             $successful = false;
@@ -82,14 +83,14 @@ class WerbeSeiteController
             $iferror = true;
             $successful = false;
         }
-        if($iferror){
+        if ($iferror) {
             header('Location: /');
         }
         if ($iferror == false) {
-            insertNewsletter($benutzername,$email,$language);
+            insertNewsletter($benutzername, $email, $language);
             $_SESSION['noerror'] = "Registrierung erfolgreich";
         }
-        if ($successful == true){
+        if ($successful == true) {
             $_SESSION['newsletteranmeldungen']++;
             header('Location: /');
         }
