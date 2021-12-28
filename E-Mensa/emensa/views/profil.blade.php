@@ -18,9 +18,9 @@
         </p>
         <p id="admin">
             @if($userinfo['admin'] == 1)
-                Admin
+                Sie sind Admin
             @else
-                kein Admin
+                Sie sind kein Admin
             @endif
         </p>
         <p class="submit">
