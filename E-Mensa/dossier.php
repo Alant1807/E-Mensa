@@ -1,84 +1,41 @@
 <?php
 $TabellenInhalt =
     [
-        1 => ['1 1)', '10 min', '15 min', 'Habe am anfang Ersteller als Attribut angegeben', 'Ersteller als Entität angegeben', 'keine', 'Support Termin'],
-        2 => ['1 2)', '15 min', '25 min', 'Wussten nicht was wir als Fremdschlüssel setzen', 'In lerngruppe gefragt', 'Keine', 'Lerngruppe'],
-        3 => ['1 3)', '45 min', '30 min', 'Habe im Internet ein gutes beipiel gefunden an dem man sich orientieren konnte', 'keine', 'keine', 'stackoverflow'],
-        4 => ['1 4)', '1 min', '1 min', 'Keine', 'Keine', 'Keine', 'Keine'],
-        5 => ['1 5)', '5 min', '5 min', 'keine', 'keine', 'keine', 'keine'],
-        6 => ['1 6)', '5 min', '5 min', '', 'Sortiert mit ASC und Limit 5', '', ''],
-        7 => ['2', '1 stunden', '30 minuten', 'Die prepared Statements hab ich in der ersten Aufgabe schon gemacht, sodass ich nur XSS machen musste', '$einfuegen = $link->prepare("INSERT INTO ersteller (email, name) VALUES (?, ?)");$einfuegen->bind_param(ss, $email, $name);$einfuegen->execute();$einfuegen2 = $link->prepare("INSERT INTO wunschgericht (gerichtname, erstellungsdatum, beschreibung, ErstellerID)VALUES(?,?,?,?)");$einfuegen2->bind_param(ssss, $gerichtname, $erstellungsdatum, $beschreibung, $email);$einfuegen2->execute(); XSS: echo value=" . htmlspecialchars(Abschicken) . ";', 'keine', 'Vorlesung'],
-        8 => ['3', '0', '0', 'keine', 'keine', 'Anderes Team hatte keine Zeit', 'Keine'],
-        9 => ['4', '30 min', '30 min', 'keine', 'Keine', 'Keine', 'Keine'],
-        10 => ['5 1)', '1 min', '1 min', 'keine', 'keine', 'keine', 'keine'],
-        11 => ['5 2)', '1 min', '1 min', 'keine', 'keine', 'keine', 'keine'],
-        12 => ['5 3)', '1 min', '1 min', 'keine', 'keine', 'keine', 'keine'],
-        13 => ['5 4)', '3 min', '3 min', 'keine', 'keine', 'keine', 'keine'],
-        14 => ['5 5)', '5 min', '20 min', 'Wir bekammen immer fehlermeldungen', 'beim build in server den direkten pfad angegeben', 'keine', 'keine'],
-        15 => ['6 a)', '15 min', '45 min', 'nicht gewusst, dass man im Controller $_GET aufrufen kann','$name ="";
-        if(!isset($_GET[name])){
-            $name = "Kein Name";
-        }
-        else{
-            $name = $_GET[name];
-        }', 'ohne $_GET gearbeitet', 'Hilfe bekommen von Komilitonen'],
-        16 => ['6 b)', '30 min', '30 min', 'einfach', 'Array mit Datenbank-Werten vom Controller in die View gesendet und mit Blade ausgegeben', 'keine', 'Vorlesung'],
-        17 => ['6 c)', '15 min', '15 min', 'gleicher Ablauf wie 6 b) deswegen schneller gelöst', 'Array mit Datenbank-Werten vom Controller in die View gesendet und mit Blade ausgegeben', 'keine', 'Vorlesung'],
-        18 => ['6 d)', '1 Stunde', '3 Stunden', 'Probleme gehabt, sodass wir die Aufgabe teilweise übersprungen haben, bis wir später die Lösung hatten', 'if(!isset($_GET[no])){
-            return view(examples.pages.m4_6d_page_1,[]);
-        }
-        if(isset($_GET[no])) {
-            if ($_GET[no] == "1") {
-                return view(examples.pages.m4_6d_page_1,[]);
-            }
-            if ($_GET[no] == "2") {
-                return view(examples.pages.m4_6d_page_2,[]);
-            }', 'Die viewname nicht richtig eingegeben', 'Hilfe von Komilitonen'],
-        19 => ['7', '4 Stunden', '12 Stunden', 'Die Vermittlung zur View hatte uns Schwierigkeiten gebracht, sodass wir lange dransaßen bis wir am nächsten Tag erst wieder dran gearbeitet haben', 'Im Model die SQL Statements gemacht, Im HomeController die Datenbankwerte in ein Array gespeichert und mittels view an die Index geschickt und in der Index per Blade @extends ein Layout erschaffen, die wir mit @section aufgeteilt haben', 'Die Vermittlung an die view hatte uns Am Anfang schwierigkeiten gebracht', 'Vorlesung/Hilfe von Kommilitonen'],
-        20 => ['8 1)', '5 min', '10 min', 'Wusste nihct wie ich es mit ALTER machen kann', 'ALTER TABLE gericht_hat_kategorie ADD UNIQUE (gericht_id, kategorie_id)', 'keine', 'keine'],
-        21 => ['8 2)', '5 min', '5 min', 'keine', 'ALTER TABLE gericht ADD INDEX NameID (name)', 'keine', 'keine'],
-        22 => ['8 3)', '5 min', '15 min', 'keine', '
-        ALTER TABLE gericht_hat_allergen DROP FOREIGN KEY gericht_hat_allergen_ibfk_2
-        ALTER TABLE gericht_hat_allergen
-            ADD CONSTRAINT gericht_hat_allergen_ibfk_2
-                FOREIGN KEY (gericht_id)
-                    REFERENCES gericht (id)
-                    ON DELETE CASCADE;            
-        ALTER TABLE gericht_hat_kategorie DROP FOREIGN KEY gericht_hat_kategorie_ibfk_1     
-        ALTER TABLE gericht_hat_kategorie
-            ADD CONSTRAINT gericht_hat_kategorie_ibfk_1
-                FOREIGN KEY (gericht_id)
-                    REFERENCES gericht (id)
-                    ON DELETE CASCADE'
-            , 'keine', 'Lerngruppe'],
-        27 => ['8 4)', '5 min', '5 min', 'keine', '
-        ALTER TABLE gericht_hat_kategorie  DROP FOREIGN KEY gericht_hat_kategorie_ibfk_2;
-
-ALTER TABLE gericht_hat_kategorie
-    ADD CONSTRAINT gericht_hat_kategorie_ibfk_2
-        FOREIGN KEY (kategorie_id)
-            REFERENCES kategorie (id)
-            ON DELETE RESTRICT;
-
-ALTER TABLE kategorie DROP FOREIGN KEY kategorie_ibfk_1;
-
-ALTER TABLE kategorie
-    ADD CONSTRAINT kategorie_ibfk_1
-        FOREIGN KEY (eltern_id)
-            REFERENCES kategorie (id)
-            ON DELETE RESTRICT;', 'keine', '3)'],
-        28 => ['8 5)', '5 min', '5 min', 'keine', '
-        ALTER TABLE gericht_hat_allergen   DROP FOREIGN KEY gericht_hat_allergen_ibfk_1;
-
-ALTER TABLE gericht_hat_allergen
-    ADD CONSTRAINT gericht_hat_allergen_ibfk_1
-        FOREIGN KEY (code)
-            REFERENCES allergen (code)
-            ON UPDATE CASCADE;', 'keine', '3) und 4)'],
-        29 => ['8 6)', '3 min', '3 min', 'keine', 'ALTER TABLE gericht_hat_kategorie
-    ADD CONSTRAINT PRIMARY KEY (gericht_id, kategorie_id);', 'keine', 'keine'],
-
-
+        1 => ['1 1)', '10 min', '10 min', 'keine', 'Tabelle angelegt', 'keine', 'keine'],
+        2 => ['1 2)', '10 min', '5 min', 'der Frontcontroller ist mir direkt aufgefallen', 'direkt zu beginn im Frontcontroller', 'Keine', 'keine'],
+        3 => ['1 3)', '30 min', '1 Tag', 'mussten zuerst die Anmeldemaske hinzufügen', 'siehe 1 4)', 'keine Anmeldemaske gehabt', 'keine'],
+        4 => ['1 4)', '3 Stunden', '1 Tag', 'Wir haben zusätzlich eine Registrierenmaske hinzugefügt um es sinvoller zu gestalten', 'neuen Controller angelegt für das Anmelden/Registrieren, Model für die Anmelde/Registrierung und Validation hinzugefügt', 'keine', 'Vorlesung/Internet'],
+        5 => ['1 5)', '10 min', '10 min', 'keine', 'Transaktion begonnen und mit prepared Statements den Befehl UPDATE benutzer SET anzahlanmeldungen = anzahlanmeldungen + 1 WHERE email = (?) ausgeführt', 'keine', 'Vorlesung/Internet'],
+        6 => ['1 6)', '10 min', '10 min', 'keine', 'Transaktion und mit prepared Statements den Befehl UPDATE benutzer SET letzteanmeldung bzw letzterfehler = NOW() WHERE email = (?) ausgeführt', 'keine', 'Internet um den Befehl NOW() zu finden'],
+        7 => ['1 7)', '10 min', '5 minuten', 'ging schnell', 'in der Index.blade mit einer Session geprüft ob man angemeldet ist, wenn ja dann wird der benutzer angezeigt', 'keine', 'Vorlesung'],
+        8 => ['1 8)', '1 stunde', '45 min', 'ging schneller weil ich wenig coden musste', 'Neuen Controller angelegt und eine neue Blade /profile wo man die Daten des Benutzers sehen kann', 'keine', 'Keine'],
+        9 => ['1 9)', '5 min', '5 min', 'keine', 'in den SQL-Anweisungen der Anmeldungen die Funktionen mysqli_begin_transaction und mysqli_commit() verwendet', 'Keine', 'Keine'],
+        10 => ['1 10)', '10 min', '10 min', 'keine', 'eine funtion in den Anmeldecontroller fürs abmelden mit dem pfad/abmeldung konfiguriert ', 'keine', 'keine'],
+        11 => ['1 11)', '2 stunden', '1 Tag', 'habe zusätzlich noch die Funktion eingebaut um ein Konto zu entsperren', 'Neuen Controller implementiert, wo das konto entsperrt werden kann mit Wiederherstellungscode', 'Speichern in der Datenbank', 'keine'],
+        12 => ['1 13)', '5 min', '5 min', 'keine', 'password_hash() und password_verify() verwendet', 'keine', 'internet'],
+        13 => ['2 1)', '5 min', '5 min', 'keine', 'Tabelle eingerichtet', 'keine', 'keine'],
+        14 => ['2 2)', '1 stunde', 'paar tage später', 'probleme beim Speichern der Bilder in der Datenbank (mussten in den Supporttermin)', 'den Befehl UPDATE gericht SET bildname = (Name vom bild) WHERE id = ?', 'Am Anfang beim Speichern der Bilder in die Datenbank', 'Supporttermin'],
+        15 => ['2 3)', '15 min', '15 min', 'keine','in der index.blade als img src="" den pfad zum Bild angegeben', 'keine', 'keine'],
+        16 => ['2 4)', '5 min', '5 min', 'keine', 'Abgefragt ob das Bild existiert, wenn nicht dann den pfad zu missing imgs angegeben', 'keine', 'keine'],
+        17 => ['3)', '1 stunden', '4 Stunden', 'Monolog hat sich nicht downloaden lassen, brauchte etwas länger um das zu fixen plus Monolog einzurichten', 'Monolog herunterladen, logdatei einrichten', 'Download schlug fehl', 'Internet'],
+        18 => ['4 a)', '15 min', '5 min', 'war einfach', 'CREATE VIEW IF NOT EXISTS view_suppengerichte AS SELECT name FROM gericht WHERE name LIKE %suppe%;', 'keine', 'Vorlesung'],
+        19 => ['4 b)', '10 min', '5 min', 'war einfach', 'CREATE VIEW IF NOT EXISTS view_anmeldungen AS SELECT anzahlanmeldungen FROM benutzer ORDER BY anzahlanmeldungen ASC;', 'keine', 'Vorlesung'],
+        20 => ['4 c)', '15 min', '1 stunde', 'war komplizierter umzusetzen, sodass ich länger überlegen musste, bis ich auf die lösung kam', 'CREATE VIEW IF NOT EXISTS view_kategoriegerichte_vegetarisch AS
+SELECT gericht.name AS gerichtname ,
+       kategorie.name AS kategorie
+FROM gericht
+         JOIN gericht_hat_kategorie ON gericht.id = gericht_hat_kategorie.gericht_id && gericht.vegetarisch IS TRUE
+         RIGHT JOIN kategorie ON gericht_hat_kategorie.kategorie_id = kategorie.id;', 'keine', 'Vorlesung'],
+        21 => ['5 a)', '15 min', '15 min', 'keine', 'CREATE PROCEDURE AnmeldeCounter(IN email_input VARCHAR(100))
+BEGIN
+    UPDATE benutzer SET anzahlanmeldungen = anzahlanmeldungen + 1
+    WHERE email = email_input;
+end; CREATE PROCEDURE AnzahlfehlerCounter(IN email_input VARCHAR(100))
+BEGIN
+    UPDATE benutzer SET anzahlfehler = anzahlfehler + 1
+    WHERE email = email_input;
+end;', 'keine', 'Vorlesung'],
+        22 => ['5 b)', '5 min', '5 min', 'keine', 'in der Model die vorherige Inkrementierung ohne die Prozedur mit der neuen Prozedur ersetzt', 'keine', 'keine'],
     ];
 
 function Createtabell(array $TabellenInhalt)
@@ -137,7 +94,7 @@ function Createtabell(array $TabellenInhalt)
     </style>
 </head>
 <body>
-<h1> Dossier M3 </h1>
+<h1> Dossier M5 </h1>
 <h2> Praktikum DBWT <br> Paul, Ebeling, 3272182 <br> Alan, Tofeq, 3286019 </h2>
 <table>
     <tr>

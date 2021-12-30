@@ -1,3 +1,9 @@
+/*<!--
+- Praktikum DBWT. Autoren:
+- Paul, Ebeling, 3272182
+- Alan, Tofeq, 3286019
+-->*/
+
 CREATE VIEW IF NOT EXISTS view_suppengerichte AS
 SELECT name FROM gericht
 WHERE name LIKE '%suppe%';

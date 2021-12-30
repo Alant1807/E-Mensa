@@ -1,3 +1,9 @@
+<!--
+- Praktikum DBWT. Autoren:
+- Paul, Ebeling, 3272182
+- Alan, Tofeq, 3286019
+-->
+
 <?php
 /**
  * Diese Datei enthält alle SQL Statements für die Tabelle "kategorie"

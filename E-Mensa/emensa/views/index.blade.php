@@ -1,3 +1,9 @@
+<!--
+- Praktikum DBWT. Autoren:
+- Paul, Ebeling, 3272182
+- Alan, Tofeq, 3286019
+-->
+
 @extends('Layout.layoutwerbeseite')
 
 @section('navbereich')
@@ -73,7 +79,6 @@
                                  alt="Bild des Gerichtes"
                             ></td>
                     @endif
-
                 </tr>
             @endforeach
             </tbody>

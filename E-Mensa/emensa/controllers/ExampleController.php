@@ -1,3 +1,9 @@
+<!--
+- Praktikum DBWT. Autoren:
+- Paul, Ebeling, 3272182
+- Alan, Tofeq, 3286019
+-->
+
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/kategorie.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/gericht.php');
