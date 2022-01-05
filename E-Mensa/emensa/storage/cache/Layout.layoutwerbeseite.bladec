@@ -1,3 +1,9 @@
+<!--
+- Praktikum DBWT. Autoren:
+- Paul, Ebeling, 3272182
+- Alan, Tofeq, 3286019
+-->
+
 <!DOCTYPE html>
 <html lang="de" xmlns="http://www.w3.org/1999/html">
 <head>

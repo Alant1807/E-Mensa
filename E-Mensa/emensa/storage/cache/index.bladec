@@ -1,3 +1,9 @@
+<!--
+- Praktikum DBWT. Autoren:
+- Paul, Ebeling, 3272182
+- Alan, Tofeq, 3286019
+-->
+
 <?php $_shouldextend[1]=1; ?>
 
 <?php $this->startSection('navbereich'); ?>
@@ -74,7 +80,6 @@
  alt="Bild des Gerichtes"
  ></td>
  <?php endif; ?>
-
  </tr>
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </tbody>

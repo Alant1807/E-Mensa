@@ -1,3 +1,9 @@
+<!--
+- Praktikum DBWT. Autoren:
+- Paul, Ebeling, 3272182
+- Alan, Tofeq, 3286019
+-->
+
 <?php $_shouldextend[1]=1; ?>
 
 <?php $this->startSection('bartitle'); ?>
@@ -20,9 +26,9 @@
  </p>
  <p id="admin">
  <?php if($userinfo['admin'] == 1): ?>
- Admin
+ Sie sind Admin
  <?php else: ?>
- kein Admin
+ Sie sind kein Admin
  <?php endif; ?>
  </p>
  <p class="submit">
