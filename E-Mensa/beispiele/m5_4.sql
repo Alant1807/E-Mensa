@@ -20,15 +20,3 @@ SELECT gericht.name AS gerichtname ,
 FROM gericht
          JOIN gericht_hat_kategorie ON gericht.id = gericht_hat_kategorie.gericht_id && gericht.vegetarisch IS TRUE
          RIGHT JOIN kategorie ON gericht_hat_kategorie.kategorie_id = kategorie.id;
-
-CREATE PROCEDURE AnmeldeCounter(IN email_input VARCHAR(100))
-BEGIN
-    UPDATE benutzer SET anzahlanmeldungen = anzahlanmeldungen + 1
-    WHERE email = email_input;
-end;
-
-CREATE PROCEDURE AnzahlfehlerCounter(IN email_input VARCHAR(100))
-BEGIN
-    UPDATE benutzer SET anzahlfehler = anzahlfehler + 1
-    WHERE email = email_input;
-end;
