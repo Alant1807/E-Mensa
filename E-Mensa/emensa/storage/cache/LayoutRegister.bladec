@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/html">
+<head>
+ <meta charset="UTF-8">
+ <title>E-Mensa</title>
+ <!-- <link rel="stylesheet" href="index.css"> -->
+</head>
+<body>
+<form method="post" action="C:\Studium\Semester3\DBWT\Praktikum\EMensa\E-Mensa\emensa\controllers\RegisterController.php">
+ <label for="mail"> E-Mail:</label>
+ <input type="email" id="mail">
+ <label for="password"> Passwort:</label>
+ <input id="password" type="password">
+ <label for="passwordW"> Passwort Wiederholen:</label>
+ <input id="passwordW" type="password">
+ <label for="admin">Admin</label>
+ <input type="checkbox" id="admin">
+ <input type="submit" VALUE="Registrieren" name="register">
+</form>
+</body>
+</html>
