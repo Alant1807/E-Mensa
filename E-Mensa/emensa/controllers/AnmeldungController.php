@@ -178,6 +178,7 @@ class AnmeldungController
             if (!password_verify($password, $data['passwort']) && $data['email'] == $email && !empty($email) && $data['admin'] != 1) {
                 $_SESSION['email'] = $email;
                 $_SESSION['failedlogin'] = true;
+                logger()->warning('failed login', [$email]);
                 $loginFailed = true;
             }
             if ($data['admin'] != $admin) {
