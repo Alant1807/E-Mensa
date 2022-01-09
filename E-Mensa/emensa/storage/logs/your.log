@@ -367,3 +367,6 @@
 [2022-01-09T19:34:30.041508+00:00] name.INFO: Zugriff auf Hauptseite ohne Anmeldung/Registrierung [] []
 [2022-01-09T19:35:11.907172+00:00] name.INFO: sucessfull register ["max@max.de"] []
 [2022-01-09T19:35:11.918429+00:00] name.INFO: Zugriff auf Hauptseite ["max@max.de"] []
+[2022-01-09T19:49:13.501071+00:00] name.INFO: Zugriff auf Hauptseite ["max@max.de"] []
+[2022-01-09T19:49:17.388541+00:00] name.INFO: logout ["max@max.de"] []
+[2022-01-09T19:49:17.411387+00:00] name.INFO: Zugriff auf Hauptseite ohne Anmeldung/Registrierung [] []
