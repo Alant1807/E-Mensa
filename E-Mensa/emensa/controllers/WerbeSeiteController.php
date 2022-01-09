@@ -8,6 +8,7 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/gericht.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/login.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/bewertung.php');
 
 class WerbeSeiteController
 {
@@ -20,14 +21,14 @@ class WerbeSeiteController
         }
         $vars = ['gerichte' => db_gericht_select_menu(),
             'allergene' => db_allergenlist(),
-            'refresher' => $_SESSION['refresher'],
+            'refresher' => $_SESSION['refresher'] ?? NULL,
             'getrows' => getrowsgerichte(),
-            'benutzername_error' => $_SESSION['benutzername_error'],
-            'email_error' => $_SESSION['email_error'],
-            'checkbox_error' => $_SESSION['checkbox_error'],
-            'noerror' => $_SESSION['noerror'],
-            'newsletteranmeldungen' => $_SESSION['newsletteranmeldungen'],
-            'existemail' => $_SESSION['existemail']
+            'benutzername_error' => $_SESSION['benutzername_error'] ?? NULL,
+            'email_error' => $_SESSION['email_error'] ?? NULL,
+            'checkbox_error' => $_SESSION['checkbox_error'] ?? NULL,
+            'noerror' => $_SESSION['noerror'] ?? NULL,
+            'newsletteranmeldungen' => $_SESSION['newsletteranmeldungen'] ?? NULL,
+            'existemail' => $_SESSION['existemail'] ?? NULL
         ];
         if (isset($_SESSION['benutzername_error']) || isset($_SESSION['email_error']) ||
             isset($_SESSION['checkbox_error']) || isset($_SESSION['noerror']) || isset($_SESSION['existemail'])) {
@@ -45,6 +46,23 @@ class WerbeSeiteController
         }
         return view('index', $vars);
     }
+
+    public function bewertung(RequestData $rd)
+    {
+        $gericht_id = $rd->query['id'] ?? 1;
+        if ($_POST['submit']) {
+            Set_Bewertungen($_POST);
+        }
+        if ($_SESSION['login_ok']) {
+            $vars = ['gericht' => gericht_id_find($gericht_id)];
+            return view('Bewertung', $vars);
+        }
+        if ($_POST['back']) {
+            header('Location: /');
+        }
+        return view('Anmeldung');
+    }
+
 
     public function checkFormular()
     {

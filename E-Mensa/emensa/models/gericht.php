@@ -9,7 +9,7 @@
  * Diese Datei enthält alle SQL Statements für die Tabelle "gerichte"
  */
 
-function db_gericht_select_all()
+function db_gericht_select_all(): array
 {
     try {
         $link = connectdb();
@@ -31,7 +31,7 @@ function db_gericht_select_all()
 
 }
 
-function getrowsgerichte()
+function getrowsgerichte(): int|string
 {
     $link = connectdb();
     $sql = "SELECT name, preis_intern, preis_extern,code FROM gericht,gericht_hat_allergen 
@@ -45,7 +45,7 @@ function getrowsgerichte()
     return $rowcount;
 }
 
-function db_gericht_select_name_and_intern_price_moreThan2euro()
+function db_gericht_select_name_and_intern_price_moreThan2euro(): array
 {
     $link = connectdb();
 
@@ -58,11 +58,11 @@ function db_gericht_select_name_and_intern_price_moreThan2euro()
     return $data;
 }
 
-function db_gericht_select_menu()
+function db_gericht_select_menu(): array
 {
     $link = connectdb();
 
-    $sql = "SELECT gericht.name, preis_intern, preis_extern,bildname, GROUP_CONCAT(allergen.code) allergene
+    $sql = "SELECT id, gericht.name, preis_intern, preis_extern,bildname, GROUP_CONCAT(allergen.code) allergene
                 FROM
                     (allergen RIGHT JOIN gericht_hat_allergen ON allergen.code=gericht_hat_allergen.code)
                     RIGHT JOIN gericht ON gericht_hat_allergen.gericht_id=gericht.id
@@ -78,7 +78,7 @@ function db_gericht_select_menu()
     return $data;
 }
 
-function db_allergenlist()
+function db_allergenlist(): array
 {
     $link = connectdb();
 

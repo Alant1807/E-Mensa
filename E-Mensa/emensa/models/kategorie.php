@@ -9,7 +9,8 @@
  * Diese Datei enthält alle SQL Statements für die Tabelle "kategorie"
  */
 
-function db_kategorie_select_all() {
+function db_kategorie_select_all(): array
+{
     $link = connectdb();
 
     $sql = "SELECT * FROM kategorie ORDER BY name ASC";

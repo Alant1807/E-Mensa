@@ -62,6 +62,9 @@
                 <th> Preis extern</th>
                 <th> Allergene</th>
                 <th> Bilder</th>
+                @if($_SESSION['login_ok'])
+                <th>Bewerten</th>
+                @endif
             </tr>
             </thead>
             <tbody>
@@ -78,6 +81,11 @@
                         <td><img class="bilder" src="/img/gerichte/{{$gericht['bildname']}}"
                                  alt="Bild des Gerichtes"
                             ></td>
+                    @endif
+                    @if($_SESSION['login_ok'])
+                        <td>
+                            <a href="/bewertung?gerichtid={{$gericht['id']}}">Gericht bewerten {{var_dump($gericht['id'])}}</a>
+                        </td>
                     @endif
                 </tr>
             @endforeach

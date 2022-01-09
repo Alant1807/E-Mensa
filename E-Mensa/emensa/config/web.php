@@ -32,6 +32,7 @@ return array(
     '/entercode' => 'AnmeldungController@entercode',
     '/resetKontowithCode' => 'ResetController@resetKontowithCode',
     '/checkCode' => 'ResetController@checkCode',
+    '/bewertung' => 'WerbeSeiteController@bewertung',
 
     // Erstes Beispiel:
     '/m4_6a_queryparameter' => 'ExampleController@m4_6a_queryparameter',

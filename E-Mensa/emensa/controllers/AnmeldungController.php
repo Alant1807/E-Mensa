@@ -12,11 +12,11 @@ class AnmeldungController
 {
     public function anmeldung()
     {
-        $vars = ['msg' => $_SESSION['login_result_message'],
-            'emptyuser' => $_SESSION['emptyuser'],
-            'emptypassword' => $_SESSION['emptypassword'],
-            'failedlogin' => $_SESSION['failedlogin'],
-            'login_fail_admin' => $_SESSION['login_fail_admin']];
+        $vars = ['msg' => $_SESSION['login_result_message'] ?? NULL,
+            'emptyuser' => $_SESSION['emptyuser'] ?? NULL,
+            'emptypassword' => $_SESSION['emptypassword'] ?? NULL,
+            'failedlogin' => $_SESSION['failedlogin'] ?? NULL,
+            'login_fail_admin' => $_SESSION['login_fail_admin']] ?? NULL;
         if (isset($_SESSION['login_result_message']) || isset($_SESSION['emptyuser'])
             || isset($_SESSION['emptypassword']) || isset($_SESSION['login_fail_admin'])) {
             $_SESSION['login_result_message'] = NULL;

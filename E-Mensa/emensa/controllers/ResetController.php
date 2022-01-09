@@ -12,11 +12,11 @@ class ResetController
 {
     public function zuruecksetzen()
     {
-        $vars = ['failurepass' => $_SESSION['failurepass'],
-            'failurerepeatpass' => $_SESSION['failurerepeatpass'],
-            'notequalPass' => $_SESSION['notequalPass'],
-            'fail_email' => $_SESSION['fail_email'],
-            'notequalMail' => $_SESSION['notequalMail']];
+        $vars = ['failurepass' => $_SESSION['failurepass'] ?? NULL,
+            'failurerepeatpass' => $_SESSION['failurerepeatpass'] ?? NULL,
+            'notequalPass' => $_SESSION['notequalPass'] ?? NULL,
+            'fail_email' => $_SESSION['fail_email'] ?? NULL,
+            'notequalMail' => $_SESSION['notequalMail']] ?? NULL;
         if (isset($_SESSION['failurepass']) || isset($_SESSION['failurerepeatpass'])
             || isset($_SESSION['notequalPass']) || isset($_SESSION['fail_email']) || isset($_SESSION['notequalMail'])) {
             $_SESSION['failurepass'] = NULL;
@@ -30,8 +30,8 @@ class ResetController
 
     public function resetKontowithCode()
     {
-        $vars = ['emptycode' => $_SESSION['emptycode'],
-            'falsecode' => $_SESSION['falsecode']];
+        $vars = ['emptycode' => $_SESSION['emptycode'] ?? NULL,
+            'falsecode' => $_SESSION['falsecode']] ?? NULL;
         if (isset($_SESSION['emptycode']) || isset($_SESSION['falsecode'])) {
             $_SESSION['emptycode'] = NULL;
             $_SESSION['falsecode'] = NULL;

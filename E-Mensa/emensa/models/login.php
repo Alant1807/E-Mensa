@@ -40,7 +40,7 @@ function insertcode($email, $code)
     mysqli_close($link);
 }
 
-function getUser($user)
+function getUser($user): bool|array|null
 {
     $link = connectdb();
     $user = mysqli_real_escape_string($link, $user);
@@ -55,7 +55,7 @@ function getUser($user)
     return $data;
 }
 
-function getUserCode($email)
+function getUserCode($email): bool|array|null
 {
     $link = connectdb();
     $email = mysqli_real_escape_string($link, $email);
@@ -122,7 +122,7 @@ function insertNewsletter($benutzername, $email, $language)
     mysqli_close($link);
 }
 
-function getNewsletteruser($email)
+function getNewsletteruser($email): bool|array|null
 {
     $link = connectdb();
     $email = mysqli_real_escape_string($link, $email);
