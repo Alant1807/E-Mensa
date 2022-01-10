@@ -55,3 +55,12 @@ function get_user_Bewertungen($user): bool|array|null
     mysqli_close($link);
     return $data;
 }
+
+function removeRating($id){
+    $link = connectdb();
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement, "DELETE FROM bewertungen WHERE gericht_id = (?)");
+    mysqli_stmt_bind_param($statement, 'i', $id);
+    mysqli_stmt_execute($statement);
+    mysqli_close($link);
+}

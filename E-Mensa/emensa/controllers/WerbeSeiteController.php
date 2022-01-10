@@ -65,7 +65,7 @@ class WerbeSeiteController
 
     public function bewertungen(RequestData $rd): string
     {
-        if($_POST['back']){
+        if ($_POST['back']) {
             header('Location: /');
         }
         $vars = ['bewertungen' => get_Bewertungen()];
@@ -74,11 +74,18 @@ class WerbeSeiteController
 
     public function meinebewertungen()
     {
-        if($_POST['back']){
+        if ($_POST['back']) {
             header('Location: /');
         }
-        if($_SESSION['login_ok']){
+        if ($_SESSION['login_ok']) {
             $vars = ['bewertungen' => get_user_Bewertungen($_SESSION['email'])];
+            if ($_POST['submitdelete']) {
+                foreach ($_POST['delete'] as $deleteRating) {
+                    removeRating($deleteRating);
+                }
+                echo "<meta http-equiv='refresh' content='0'>";
+                return view('meineBewertungen', $vars);
+            }
             return view('meineBewertungen', $vars);
         }
     }
