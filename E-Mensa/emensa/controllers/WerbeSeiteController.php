@@ -48,9 +48,10 @@ class WerbeSeiteController
 
     public function bewertung(RequestData $rd): string
     {
-        $gericht_id = $rd->query['id'] ?? 1;
+        $gericht_id = $rd->query['gerichtid'] ?? 1;
         if ($_POST['submit']) {
             Set_Bewertungen($_POST);
+            header('Location: /meinebewertungen');
         }
         if ($_SESSION['login_ok']) {
             $vars = ['gericht' => gericht_id_find($gericht_id)];
@@ -62,6 +63,25 @@ class WerbeSeiteController
         return view('Anmeldung');
     }
 
+    public function bewertungen(RequestData $rd): string
+    {
+        if($_POST['back']){
+            header('Location: /');
+        }
+        $vars = ['bewertungen' => get_Bewertungen()];
+        return view('Bewertungen', $vars);
+    }
+
+    public function meinebewertungen()
+    {
+        if($_POST['back']){
+            header('Location: /');
+        }
+        if($_SESSION['login_ok']){
+            $vars = ['bewertungen' => get_user_Bewertungen($_SESSION['email'])];
+            return view('meineBewertungen', $vars);
+        }
+    }
 
     public function checkFormular()
     {

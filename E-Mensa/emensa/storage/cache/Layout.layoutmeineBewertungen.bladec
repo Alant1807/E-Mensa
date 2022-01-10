@@ -1,0 +1,24 @@
+<!--
+- Praktikum DBWT. Autoren:
+- Paul, Ebeling, 3272182
+- Alan, Tofeq, 3286019
+-->
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+ <meta charset="UTF-8">
+ <title><?php echo $this->yieldContent('bartitle'); ?></title>
+ <link rel="stylesheet" href="/CSS/meineBewertungen.css">
+</head>
+<body>
+<header>
+ <h3><?php echo $this->yieldContent('title'); ?></h3>
+</header>
+<main>
+ <div>
+ <?php echo $this->yieldContent('content'); ?>
+ </div>
+</main>
+</body>
+
