@@ -10,7 +10,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/login.php');
 
 class ResetController
 {
-    public function zuruecksetzen()
+    public function zuruecksetzen(): string
     {
         $vars = ['failurepass' => $_SESSION['failurepass'] ?? NULL,
             'failurerepeatpass' => $_SESSION['failurerepeatpass'] ?? NULL,
@@ -28,7 +28,7 @@ class ResetController
         return view('UpdateUser', $vars);
     }
 
-    public function resetKontowithCode()
+    public function resetKontowithCode(): string
     {
         $vars = ['emptycode' => $_SESSION['emptycode'] ?? NULL,
             'falsecode' => $_SESSION['falsecode']] ?? NULL;

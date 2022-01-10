@@ -84,7 +84,7 @@
                     @endif
                     @if($_SESSION['login_ok'])
                         <td>
-                            <a href="/bewertung?gerichtid={{$gericht['id']}}">Gericht bewerten {{var_dump($gericht['id'])}}</a>
+                            <a href="/bewertung?gerichtid={{$gericht['id']}}">Gericht bewerten</a>
                         </td>
                     @endif
                 </tr>

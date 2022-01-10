@@ -10,7 +10,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/login.php');
 
 class AnmeldungController
 {
-    public function anmeldung()
+    public function anmeldung(): string
     {
         $vars = ['msg' => $_SESSION['login_result_message'] ?? NULL,
             'emptyuser' => $_SESSION['emptyuser'] ?? NULL,
@@ -27,7 +27,7 @@ class AnmeldungController
         return view('Anmeldung', $vars);
     }
 
-    public function entercode()
+    public function entercode(): string
     {
         $vars = ['emptycode' => $_SESSION['emptycode']];
         if (isset($_SESSION['emptycode'])) {
@@ -36,7 +36,7 @@ class AnmeldungController
         return view('AnmeldenMitCode', $vars);
     }
 
-    public function registrieren()
+    public function registrieren(): string
     {
         $vars = ['existUser' => $_SESSION['existUser'],
             'emptyuser' => $_SESSION['emptyuser'],

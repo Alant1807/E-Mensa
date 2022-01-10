@@ -12,7 +12,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/bewertung.php');
 
 class WerbeSeiteController
 {
-    public function index()
+    public function index(): string
     {
         if (!isset($_SESSION['refresher'])) {
             $_SESSION['refresher'] = 0;
@@ -38,7 +38,6 @@ class WerbeSeiteController
             $_SESSION['noerror'] = NULL;
             $_SESSION['existemail'] = NULL;
         }
-        $_SESSION['target'] = "";
         if ($_SESSION['login_ok']) {
             logger()->info('Zugriff auf Hauptseite', [$_SESSION['email']]);
         } else {
@@ -47,7 +46,7 @@ class WerbeSeiteController
         return view('index', $vars);
     }
 
-    public function bewertung(RequestData $rd)
+    public function bewertung(RequestData $rd): string
     {
         $gericht_id = $rd->query['id'] ?? 1;
         if ($_POST['submit']) {

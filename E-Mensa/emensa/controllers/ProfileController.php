@@ -11,7 +11,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/login.php');
 
 class ProfileController
 {
-    public function profil()
+    public function profil(): string
     {
         if ($_POST['zurueck']) {
             header('Location: /');
