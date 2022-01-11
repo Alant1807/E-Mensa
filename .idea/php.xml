@@ -6,6 +6,29 @@
       <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/composer" />
       <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/psr/log" />
       <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/illuminate/collections" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/illuminate/contracts" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/illuminate/database" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/illuminate/macroable" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/E-Mensa/emensa/vendor/voku/portable-ascii" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
