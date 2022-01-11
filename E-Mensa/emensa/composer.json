@@ -5,5 +5,10 @@
         "eftec/bladeone": "^4.1",
         "illuminate/database": "^8.40.0",
         "ext-mysqli": "*"
+    },
+    "autoload": {
+        "classmap": [
+            "models"
+        ]
     }
 }

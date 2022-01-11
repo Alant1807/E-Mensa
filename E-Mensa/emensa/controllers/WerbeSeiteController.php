@@ -57,7 +57,7 @@ class WerbeSeiteController
             header('Location: /meinebewertungen');
         }
         if (isset($_SESSION['login_ok'])) {
-            $vars = ['gericht' => gericht_id_find($gericht_id)];
+            $vars = ['gericht' => Gericht::query()->find($gericht_id)];
             return view('Bewertung', $vars);
         }
         return view('Anmeldung');
@@ -80,9 +80,8 @@ class WerbeSeiteController
         if (isset($_SESSION['login_ok'])) {
             $vars = ['bewertungen' => get_user_Bewertungen($_SESSION['email'])];
             if (isset($_POST['submitdelete'])) {
-                foreach ($_POST['delete'] as $deleteRating) {
-                    removeRating($deleteRating);
-                }
+                $removeReview = Bewertung::query()->where('gericht_id',$_POST['delete'])->where('kunde',$_SESSION['email']);
+                $removeReview->delete();
                 echo "<meta http-equiv='refresh' content='0'>";
                 return view('meineBewertungen', $vars);
             }

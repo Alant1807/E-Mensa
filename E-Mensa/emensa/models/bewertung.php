@@ -6,6 +6,29 @@
 
 <?php
 
+class Gericht extends \Illuminate\Database\Eloquent\Model{
+    public $timestamps = false;
+    protected $primaryKey = 'id';
+    protected $table = 'gericht';
+
+    function getPreisInternAttribute($preis_intern): string
+    {
+        return number_format($preis_intern, 2);
+    }
+
+    function getPreisExternAttribute($preis_extern): string
+    {
+        return number_format($preis_extern, 2);
+    }
+
+}
+
+class Bewertung extends \Illuminate\Database\Eloquent\Model{
+    public $timestamps = false;
+    protected $table = 'bewertungen';
+    protected $primaryKey = 'id';
+}
+
 function gericht_id_find($gericht_id): array
 {
     $link = connectdb();
@@ -54,13 +77,4 @@ function get_user_Bewertungen($user): bool|array|null
     $data = mysqli_fetch_all($result, MYSQLI_BOTH);
     mysqli_close($link);
     return $data;
-}
-
-function removeRating($id){
-    $link = connectdb();
-    $statement = mysqli_stmt_init($link);
-    mysqli_stmt_prepare($statement, "DELETE FROM bewertungen WHERE gericht_id = (?)");
-    mysqli_stmt_bind_param($statement, 'i', $id);
-    mysqli_stmt_execute($statement);
-    mysqli_close($link);
 }

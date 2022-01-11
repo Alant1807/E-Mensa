@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS bewertungen
     bewertungszeitpunkt DATETIME     NOT NULL DEFAULT NOW(),
     hervorgehoben       BOOLEAN      NOT NULL DEFAULT 0,
     gericht_id          INT(8)       NOT NULL,
-    FOREIGN KEY (gericht_id) REFERENCES gericht (id),
+    FOREIGN KEY (gericht_id) REFERENCES gericht (id) ON DELETE CASCADE,
     kunde               VARCHAR(100) NOT NULL,
-    FOREIGN KEY (kunde) REFERENCES benutzer (email)
+    FOREIGN KEY (kunde) REFERENCES benutzer (email) ON DELETE CASCADE
 );

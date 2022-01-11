@@ -9,9 +9,6 @@ const VERBOSITY = 0;
 const PUBLIC_DIRNAME = "public";
 const CONFIG_WEBROUTES = '../config/web.php';
 const CONFIG_DB = '../config/db.php';
-
-require_once "../config/orm.php";
-
 // DEMO
 try {
     if(!file_exists($_SERVER['DOCUMENT_ROOT'] . "/../vendor/autoload.php")) {
@@ -21,6 +18,7 @@ try {
     }
     // file exists
     require_once $_SERVER['DOCUMENT_ROOT'] . "/../vendor/autoload.php";
+    require_once "../config/orm.php";
 
 } catch (Exception $ex) {
     echo "DOCUMENT_ROOT: {$_SERVER['DOCUMENT_ROOT']}\t\tError: ".$ex->getMessage();
