@@ -174,9 +174,9 @@
             </a>
         </li>
         <li><a href=index.blade.php> Impressum &nbsp&nbsp|&nbsp&nbsp</a></li>
-        <li><a href="/wunschgericht"> Wunschgericht &nbsp&nbsp|&nbsp&nbsp</a></li>
+        <li><a href="/wunschgericht"> Wunschgericht</a></li>
         <li><a href="/bewertungen"> @if($_SESSION['login_ok'])
-                    Bewertungen &nbsp&nbsp|&nbsp&nbsp
+                    &nbsp&nbsp|&nbsp&nbsp Bewertungen &nbsp&nbsp|&nbsp&nbsp
                 @endif</a></li>
         <li><a href="/meinebewertungen"> @if($_SESSION['login_ok'])
                     meine Bewertungen

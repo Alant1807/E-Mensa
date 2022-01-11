@@ -61,7 +61,7 @@ class AnmeldungController
             $_SESSION['email'] = NULL;
             $_SESSION['password'] = NULL;
             $_SESSION['admin'] = NULL;
-            $_SESSION['login_ok'] = NULL;
+            $_SESSION['login_ok'] = false;
             $passwordhash = password_hash($password, PASSWORD_BCRYPT);
             $data = getUser($email);
             if ($admin == "on") {
@@ -146,7 +146,7 @@ class AnmeldungController
             $data = getUser($email);
             $loginFailed = false;
             $_SESSION['failedlogin'] = false;
-            $_SESSION['login_ok'] = NULL;
+            $_SESSION['login_ok'] = false;
             if ($admin == "on") {
                 $admin = 1;
             } elseif ($admin == NULL) {
