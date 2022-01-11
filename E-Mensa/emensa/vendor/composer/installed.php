@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9eeffd0c1dd59fffa8b0ee7684a832679687f3e7',
+        'reference' => '52ad8aa41d695be0ff72e2f36b099d7a1b505f76',
         'name' => 'emensa/mvc',
         'dev' => true,
     ),
@@ -34,7 +34,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9eeffd0c1dd59fffa8b0ee7684a832679687f3e7',
+            'reference' => '52ad8aa41d695be0ff72e2f36b099d7a1b505f76',
             'dev_requirement' => false,
         ),
         'illuminate/collections' => array(

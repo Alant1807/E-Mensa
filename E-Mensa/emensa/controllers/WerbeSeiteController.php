@@ -10,6 +10,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/gericht.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/login.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/bewertung.php');
 
+$_POST['back'] = 0;
+$_POST['submit'] = 0;
+
 class WerbeSeiteController
 {
     public function index(): string
