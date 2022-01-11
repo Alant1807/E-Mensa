@@ -40,10 +40,10 @@
                 <label for="sehrschlecht">sehr schlecht</label>
             </div>
         </fieldset>
-        <label for="review">Bemerkung</label>
+        <label for="review" class="labelReview">Bemerkung</label>
         <textarea rows="5" cols="40" id="review" name="bemerkung" minlength="5"></textarea><br>
         <input type="hidden" id="gerichtid" name="gerichtID" value="{{$gericht['id']}}">
-        <input type="submit" name="submit" value="Absenden">
-        <input type="submit" name="back" value="Hauptseite">
+        <input type="submit" name="submit" class="submit" value="Absenden">
+        <input type="submit" name="back" class="mainPage" value="Hauptseite">
     </form>
 @endsection

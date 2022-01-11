@@ -2,3 +2,47 @@
     width: 150px;
     height: 130px;
 }
+
+fieldset{
+    grid-area: Bewertung;
+}
+
+textarea{
+    grid-area: Rieview;
+}
+
+.labelReview{
+    grid-area: LabelRieview;
+}
+
+p{
+    grid-area: LabelBewertung;
+}
+
+.mainPage{
+    grid-area: mainPage;
+}
+
+.submit{
+    grid-area: submit;
+}
+
+@media only screen and (min-width: 600px) {
+    form{
+        display: grid;
+        grid-template-areas: "LabelBewertung Bewertung" "LabelRieview Rieview" "mainPage submit";
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    form{
+        display: grid;
+        grid-template-areas:
+                "LabelBewertung LabelBewertung"
+                "Bewertung Bewertung"
+                "LabelRieview LabelRieview"
+                "Rieview Rieview"
+                "mainPage submit";
+    }
+}

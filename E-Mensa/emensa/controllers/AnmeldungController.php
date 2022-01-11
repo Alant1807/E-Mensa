@@ -102,7 +102,7 @@ class AnmeldungController
                 $_SESSION['login_ok'] = true;
                 header('Location: /entercode');
             }
-        } elseif ($_POST['back']) {
+        } elseif (isset($_POST['back'])) {
             logger()->info('Zugriff auf Hauptseite');
             session_destroy();
             header('Location: /');
@@ -203,7 +203,7 @@ class AnmeldungController
                 header('Location: /anmeldung');
             }
         }
-        if ($_POST['reset']) {
+        if (isset($_POST['reset'])) {
             header('Location: /zuruecksetzen');
         }
     }

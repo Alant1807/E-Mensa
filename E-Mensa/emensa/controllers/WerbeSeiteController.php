@@ -38,7 +38,7 @@ class WerbeSeiteController
             $_SESSION['noerror'] = NULL;
             $_SESSION['existemail'] = NULL;
         }
-        if ($_SESSION['login_ok']) {
+        if (isset($_SESSION['login_ok'])) {
             logger()->info('Zugriff auf Hauptseite', [$_SESSION['email']]);
         } else {
             logger()->info('Zugriff auf Hauptseite ohne Anmeldung/Registrierung');
@@ -49,23 +49,23 @@ class WerbeSeiteController
     public function bewertung(RequestData $rd): string
     {
         $gericht_id = $rd->query['gerichtid'] ?? 1;
-        if ($_POST['submit']) {
+        if (isset($_POST['back'])) {
+            header('Location: /');
+        }
+        if (isset($_POST['submit'])) {
             Set_Bewertungen($_POST);
             header('Location: /meinebewertungen');
         }
-        if ($_SESSION['login_ok']) {
+        if (isset($_SESSION['login_ok'])) {
             $vars = ['gericht' => gericht_id_find($gericht_id)];
             return view('Bewertung', $vars);
-        }
-        if ($_POST['back']) {
-            header('Location: /');
         }
         return view('Anmeldung');
     }
 
     public function bewertungen(RequestData $rd): string
     {
-        if ($_POST['back']) {
+        if (isset($_POST['back'])) {
             header('Location: /');
         }
         $vars = ['bewertungen' => get_Bewertungen()];
@@ -74,12 +74,12 @@ class WerbeSeiteController
 
     public function meinebewertungen()
     {
-        if ($_POST['back']) {
+        if (isset($_POST['back'])) {
             header('Location: /');
         }
-        if ($_SESSION['login_ok']) {
+        if (isset($_SESSION['login_ok'])) {
             $vars = ['bewertungen' => get_user_Bewertungen($_SESSION['email'])];
-            if ($_POST['submitdelete']) {
+            if (isset($_POST['submitdelete'])) {
                 foreach ($_POST['delete'] as $deleteRating) {
                     removeRating($deleteRating);
                 }
