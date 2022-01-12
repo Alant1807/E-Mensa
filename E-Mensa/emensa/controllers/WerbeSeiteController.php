@@ -23,6 +23,8 @@ class WerbeSeiteController
             'allergene' => db_allergenlist(),
             'refresher' => $_SESSION['refresher'] ?? NULL,
             'getrows' => getrowsgerichte(),
+            'preisIntern' => Gericht::query()->take(5)->pluck('preis_intern'),
+            'preisExtern' => Gericht::query()->take(5)->pluck('preis_extern'),
             'benutzername_error' => $_SESSION['benutzername_error'] ?? NULL,
             'email_error' => $_SESSION['email_error'] ?? NULL,
             'checkbox_error' => $_SESSION['checkbox_error'] ?? NULL,

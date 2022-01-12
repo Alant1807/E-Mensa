@@ -71,8 +71,8 @@
             @foreach($gerichte as $key => $gericht)
                 <tr>
                     <td>{{$gericht['name']}}</td>
-                    <td>{{$gericht['preis_intern']}}€</td>
-                    <td>{{$gericht['preis_extern']}}€</td>
+                    <td>{{$preisIntern[$key]}}€</td>
+                    <td>{{$preisExtern[$key]}}€</td>
                     <td>{{$gericht['allergene']}}</td>
                     @if($gericht['bildname'] == NULL || !file_exists("img/gerichte/" . $gericht['bildname']))
                         <td><img class="bilder" src="/img/gerichte/00_image_missing.jpg" alt="Bild des Gerichtes">
