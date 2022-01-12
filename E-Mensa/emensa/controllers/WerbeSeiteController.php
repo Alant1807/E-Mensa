@@ -21,6 +21,7 @@ class WerbeSeiteController
         }
         $vars = ['gerichte' => db_gericht_select_menu(),
             'allergene' => db_allergenlist(),
+            'bewertungen' => get_Bewertungen(),
             'refresher' => $_SESSION['refresher'] ?? NULL,
             'getrows' => getrowsgerichte(),
             'preisIntern' => Gericht::query()->take(5)->pluck('preis_intern'),
@@ -69,6 +70,11 @@ class WerbeSeiteController
     {
         if (isset($_POST['back'])) {
             header('Location: /');
+        }
+        if(isset($rd->query['hervorheben']) && $_SESSION['admin'] == true){
+            $hervorheben = Bewertung::query()->find($rd->query['hervorheben']);
+            $hervorheben->hervorgehoben ^= 1;
+            $hervorheben->save();
         }
         $vars = ['bewertungen' => get_Bewertungen()];
         return view('Bewertungen', $vars);

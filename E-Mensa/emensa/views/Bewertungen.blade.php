@@ -22,12 +22,23 @@
             </thead>
             <tbody>
             @foreach($bewertungen as $bewertung)
-                <tr>
+                <tr class="@if($bewertung['hervorgehoben'] && $_SESSION['admin'] == true)
+                        marked @endif
+                        ">
                     <td>{{$bewertung['name']}}</td>
                     <td>{{$bewertung['sternebewertung']}}</td>
                     <td>{{$bewertung['bemerkung']}}</td>
                     <td>{{$bewertung['bewertungszeitpunkt']}}</td>
                     <td>{{$bewertung['kunde']}}</td>
+                    @if($_SESSION['admin'] == 1)
+                        <td>
+                            @if($bewertung['hervorgehoben'])
+                                <a href="/bewertungen?hervorheben={{$bewertung['id']}}">Hervorhebung abwählen</a>
+                            @else
+                                <a href="/bewertungen?hervorheben={{$bewertung['id']}}">Hervorheben</a>
+                            @endif
+                        </td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>

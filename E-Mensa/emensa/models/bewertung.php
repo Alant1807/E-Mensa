@@ -6,7 +6,8 @@
 
 <?php
 
-class Gericht extends \Illuminate\Database\Eloquent\Model{
+class Gericht extends \Illuminate\Database\Eloquent\Model
+{
     public $timestamps = false;
     protected $primaryKey = 'id';
     protected $table = 'gericht';
@@ -21,9 +22,36 @@ class Gericht extends \Illuminate\Database\Eloquent\Model{
         return number_format($preis_extern, 2);
     }
 
+    function setAttributeVegan($value)
+    {
+        $acceptedvaluesTrue = ['Yes', 'Ja', "wahr", true];
+        $acceptedvaluesFalse = ['No', 'Nein', "falsch", false];
+        $str = strtolower($value);
+        $str = str_replace(" ", "", $str);
+        if(in_array($str,$acceptedvaluesTrue)){
+            $this->attributes['vegan'] = true;
+        }
+        if(in_array($str,$acceptedvaluesFalse)){
+            $this->attributes['vegan'] = false;
+        }
+    }
+
+    function setAttributeVegetarisch($value){
+        $acceptedvaluesTrue = ["Yes","Ja","wahr",true];
+        $acceptedvaluesFalse = ["No","Nein","falsch",false];
+        $str = strtolower($value);
+        $str = str_replace(" ","",$str);
+        if(in_array($str,$acceptedvaluesTrue)){
+            $this->attributes['vegetarisch'] = true;
+        }
+        if(in_array($str,$acceptedvaluesFalse)){
+            $this->attributes['vegetarisch'] = false;
+        }
+    }
 }
 
-class Bewertung extends \Illuminate\Database\Eloquent\Model{
+class Bewertung extends \Illuminate\Database\Eloquent\Model
+{
     public $timestamps = false;
     protected $table = 'bewertungen';
     protected $primaryKey = 'id';
@@ -77,4 +105,14 @@ function get_user_Bewertungen($user): bool|array|null
     $data = mysqli_fetch_all($result, MYSQLI_BOTH);
     mysqli_close($link);
     return $data;
+}
+
+function hervorheben($id)
+{
+    $link = connectdb();
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement, "CALL Hervorheben(?)");
+    mysqli_stmt_bind_param($statement, 'i', $id);
+    mysqli_stmt_execute($statement);
+    mysqli_close($link);
 }
