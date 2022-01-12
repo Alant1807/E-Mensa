@@ -100,7 +100,7 @@
 
 @section('hervorgehobeneGerichte')
     <div class="griditem MarkMeal">
-        <h1>Meinung unserer Kunedn</h1>
+        <h1>Meinung unserer Kunden</h1>
         <table>
             <thead>
             <th>Gericht</th>
