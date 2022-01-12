@@ -540,3 +540,7 @@
 [2022-01-12T16:26:53.502243+00:00] name.INFO: Zugriff auf Hauptseite ["hi@hi.de"] []
 [2022-01-12T16:27:29.000652+00:00] name.INFO: Zugriff auf Hauptseite ["hi@hi.de"] []
 [2022-01-12T17:52:26.071839+00:00] name.INFO: Zugriff auf Hauptseite ["hi@hi.de"] []
+[2022-01-12T23:36:42.423776+00:00] name.INFO: Zugriff auf Hauptseite ohne Anmeldung/Registrierung [] []
+[2022-01-12T23:37:36.765459+00:00] name.INFO: Zugriff auf Hauptseite ohne Anmeldung/Registrierung [] []
+[2022-01-12T23:37:49.529332+00:00] name.INFO: Zugriff auf Hauptseite ohne Anmeldung/Registrierung [] []
+[2022-01-12T23:38:45.472989+00:00] name.INFO: Zugriff auf Hauptseite ohne Anmeldung/Registrierung [] []
