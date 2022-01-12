@@ -10,3 +10,11 @@ CREATE TABLE IF NOT EXISTS bewertungen
     kunde               VARCHAR(100) NOT NULL,
     FOREIGN KEY (kunde) REFERENCES benutzer (email)
 );
+
+CREATE PROCEDURE Hervorheben(IN bewertung_id INT(8))
+BEGIN
+    UPDATE bewertungen SET hervorgehoben = !hervorgehoben
+    WHERE id = bewertung_id;
+end;
+
+UPDATE bewertungen SET hervorgehoben = 1 WHERE id = 1;

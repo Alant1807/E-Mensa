@@ -20,15 +20,15 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($bewertungen as $bewertung)
-                <tr>
-                    <td>{{$bewertung['name']}}</td>
-                    <td>{{$bewertung['sternebewertung']}}</td>
-                    <td>{{$bewertung['bemerkung']}}</td>
-                    <td>{{$bewertung['bewertungszeitpunkt']}}</td>
-                    <td><input type="checkbox" name="delete[]" value="{{$bewertung['gericht_id']}}"></td>
-                </tr>
-            @endforeach
+                @foreach($bewertungen as $bewertung)
+                    <tr>
+                        <td>{{$bewertung['name']}}</td>
+                        <td>{{$bewertung['sternebewertung']}}</td>
+                        <td>{{$bewertung['bemerkung']}}</td>
+                        <td>{{$bewertung['bewertungszeitpunkt']}}</td>
+                        <td><input type="checkbox" name="delete[]" value="{{$bewertung['gericht_id']}}"></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <input type="submit" name="back" value="Hauptseite">

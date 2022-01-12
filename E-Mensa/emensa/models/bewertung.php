@@ -64,3 +64,12 @@ function removeRating($id){
     mysqli_stmt_execute($statement);
     mysqli_close($link);
 }
+
+function hervorheben($id){
+    $link = connectdb();
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement, "CALL Hervorheben(?)");
+    mysqli_stmt_bind_param($statement, 'i', $id);
+    mysqli_stmt_execute($statement);
+    mysqli_close($link);
+}

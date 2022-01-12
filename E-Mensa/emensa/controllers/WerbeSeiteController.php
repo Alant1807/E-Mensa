@@ -10,8 +10,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/gericht.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/login.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/../models/bewertung.php');
 
-$_POST['back'] = 0;
-$_POST['submit'] = 0;
 
 class WerbeSeiteController
 {
@@ -31,7 +29,8 @@ class WerbeSeiteController
             'checkbox_error' => $_SESSION['checkbox_error'] ?? NULL,
             'noerror' => $_SESSION['noerror'] ?? NULL,
             'newsletteranmeldungen' => $_SESSION['newsletteranmeldungen'] ?? NULL,
-            'existemail' => $_SESSION['existemail'] ?? NULL
+            'existemail' => $_SESSION['existemail'] ?? NULL,
+            'bewertungen' => get_Bewertungen()
         ];
         if (isset($_SESSION['benutzername_error']) || isset($_SESSION['email_error']) ||
             isset($_SESSION['checkbox_error']) || isset($_SESSION['noerror']) || isset($_SESSION['existemail'])) {
@@ -52,7 +51,10 @@ class WerbeSeiteController
     public function bewertung(RequestData $rd): string
     {
         $gericht_id = $rd->query['gerichtid'] ?? 1;
-        if ($_POST['submit']) {
+        if (isset($_POST['back'])) {
+            header('Location: /');
+        }
+        if (isset($_POST['submit'])) {
             Set_Bewertungen($_POST);
             header('Location: /meinebewertungen');
         }
@@ -60,29 +62,31 @@ class WerbeSeiteController
             $vars = ['gericht' => gericht_id_find($gericht_id)];
             return view('Bewertung', $vars);
         }
-        if ($_POST['back']) {
-            header('Location: /');
-        }
         return view('Anmeldung');
     }
 
     public function bewertungen(RequestData $rd): string
     {
-        if ($_POST['back']) {
+        $bewertungs_id = $rd->query['bewertungsid'] ?? 1;
+        if (isset($_POST['back'])) {
             header('Location: /');
         }
-        $vars = ['bewertungen' => get_Bewertungen()];
+        $data = getUser($_SESSION['email']);
+        $vars = ['bewertungen' => get_Bewertungen(),
+            'userinfo' => $data,
+            'hervorheben' => hervorheben($bewertungs_id)];
         return view('Bewertungen', $vars);
     }
 
+
     public function meinebewertungen()
     {
-        if ($_POST['back']) {
+        if (isset($_POST['back'])) {
             header('Location: /');
         }
         if ($_SESSION['login_ok']) {
             $vars = ['bewertungen' => get_user_Bewertungen($_SESSION['email'])];
-            if ($_POST['submitdelete']) {
+            if (isset($_POST['submitdelete'])) {
                 foreach ($_POST['delete'] as $deleteRating) {
                     removeRating($deleteRating);
                 }
