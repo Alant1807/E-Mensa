@@ -18,6 +18,9 @@
                 <th>Bemerkung</th>
                 <th>Bewertungszeitraum</th>
                 <th>Kunde</th>
+                @if($_SESSION['admin'] == true)
+                    <th>Hervorheben</th>
+                @endif
             </tr>
             </thead>
             <tbody>

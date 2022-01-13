@@ -162,29 +162,37 @@ class WerbeSeiteController
                 $gerichtname = trim($_POST['mealname']);
             }
 
-            $erstellungsdatum = date("Y-m-d H:i:s");
+            $erstellungsdatum = date("Y-m-d");
 
             $beschreibung = "";
             if (isset($_POST['description'])) {
                 $beschreibung = trim($_POST['description']);
             }
 
-            $email = "";
-            if (isset($_POST['mail'])) {
-                $email = trim($_POST['mail']);
+            $setVegan = "";
+            if(isset($_POST['vegan'])){
+                $setVegan = trim($_POST['vegan']);
             }
 
-            $name = "";
-            if (isset($_POST['name'])) {
-                $name = trim($_POST['name']);
-            }
-            if ($name == '') {
-                $name = "anonym";
+            $setVegetarisch = "";
+            if(isset($_POST['vegetarisch'])){
+                $setVegetarisch = trim($_POST['vegetarisch']);
             }
 
-            // speichern
+            $setPreisIntern = "";
+            if(isset($_POST['preisIntern'])){
+                $setPreisIntern = trim($_POST['preisIntern']);
+                $double_value_preisIntern = floatval($setPreisIntern);
+            }
 
-            wgericht($name, $email, $gerichtname, $erstellungsdatum, $beschreibung);
+            $setPreisExtern = "";
+            if(isset($_POST['preisExtern'])){
+                $setPreisExtern = trim($_POST['preisExtern']);
+                $double_value_preisExtern = floatval($setPreisExtern);
+            }
+
+
+            wgericht($lastid,$gerichtname,$beschreibung,$erstellungsdatum,$setVegan,$setVegetarisch,$setPreisIntern,$setPreisExtern);
         }
         return view('wunschgericht');
     }

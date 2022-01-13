@@ -9,6 +9,52 @@
  * Diese Datei enthält alle SQL Statements für die Tabelle "gerichte"
  */
 
+class Gericht extends \Illuminate\Database\Eloquent\Model
+{
+    public $timestamps = false;
+    protected $primaryKey = 'id';
+    protected $table = 'gericht';
+
+    function getPreisInternAttribute($preis_intern): string
+    {
+        return number_format($preis_intern, 2);
+    }
+
+    function getPreisExternAttribute($preis_extern): string
+    {
+        return number_format($preis_extern, 2);
+    }
+
+    function setAttributeVegan($value)
+    {
+        $acceptedvaluesTrue = ['yes', 'ja'];
+        $acceptedvaluesFalse = ['no', 'nein'];
+        $str = strtolower($value);
+        $str = str_replace(" ", "", $str);
+        if (in_array($str, $acceptedvaluesTrue)) {
+            $this->attributes['vegan'] = true;
+        }
+        if (in_array($str, $acceptedvaluesFalse)) {
+            $this->attributes['vegan'] = false;
+        }
+    }
+
+    function setAttributeVegetarisch($value)
+    {
+        $acceptedvaluesTrue = ["yes", "ja"];
+        $acceptedvaluesFalse = ["no", "nein"];
+        $str = strtolower($value);
+        $str = str_replace(" ", "", $str);
+        if (in_array($str, $acceptedvaluesTrue)) {
+            $this->attributes['vegetarisch'] = true;
+        }
+        if (in_array($str, $acceptedvaluesFalse)) {
+            $this->attributes['vegetarisch'] = false;
+        }
+    }
+}
+
+
 function db_gericht_select_all(): array
 {
     try {
@@ -100,22 +146,13 @@ function db_allergenlist(): array
     return $data;
 }
 
-function wgericht($name,$email,$gerichtname,$erstellungsdatum,$beschreibung,){
+function wgericht($id,$gerichtname,$beschreibung,$erstellungsdatum,$setvegan,$setvegetarisch,$preisIntern,$preisExtern){
     $link = connectdb();
-
-    $einfuegen = $link->prepare("
-                 INSERT INTO ersteller (email, name) 
-                 VALUES (?, ?)
-                    ");
-    $einfuegen->bind_param('ss', $email, $name);
-    $einfuegen->execute();
-
-    $einfuegen2 = $link->prepare("
-        INSERT INTO wunschgericht (gerichtname, erstellungsdatum, beschreibung, ErstellerID)
-        VALUES(?,?,?,?)
-        ");
-    $einfuegen2->bind_param('ssss', $gerichtname, $erstellungsdatum, $beschreibung, $email);
-    $einfuegen2->execute();
-
+    mysqli_begin_transaction($link);
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement, "INSERT INTO gericht (id, name, beschreibung, erfasst_am, vegetarisch, vegan, preis_intern, preis_extern, bildname) VALUES (?,?,?,?,?,?,?,?,'00_image_missing.jpg')");
+    mysqli_stmt_bind_param($statement, 'isssssdds', $id, $gerichtname,$beschreibung,$erstellungsdatum,$setvegan,$setvegetarisch,$preisIntern,$preisExtern);
+    mysqli_stmt_execute($statement);
+    mysqli_commit($link);
     mysqli_close($link);
 }

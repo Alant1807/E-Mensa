@@ -18,6 +18,9 @@
  <th>Bemerkung</th>
  <th>Bewertungszeitraum</th>
  <th>Kunde</th>
+ <?php if($_SESSION['admin'] == true): ?>
+ <th>Hervorheben</th>
+ <?php endif; ?>
  </tr>
  </thead>
  <tbody>

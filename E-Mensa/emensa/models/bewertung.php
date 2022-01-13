@@ -6,50 +6,6 @@
 
 <?php
 
-class Gericht extends \Illuminate\Database\Eloquent\Model
-{
-    public $timestamps = false;
-    protected $primaryKey = 'id';
-    protected $table = 'gericht';
-
-    function getPreisInternAttribute($preis_intern): string
-    {
-        return number_format($preis_intern, 2);
-    }
-
-    function getPreisExternAttribute($preis_extern): string
-    {
-        return number_format($preis_extern, 2);
-    }
-
-    function setAttributeVegan($value)
-    {
-        $acceptedvaluesTrue = ['Yes', 'Ja', "wahr", true];
-        $acceptedvaluesFalse = ['No', 'Nein', "falsch", false];
-        $str = strtolower($value);
-        $str = str_replace(" ", "", $str);
-        if(in_array($str,$acceptedvaluesTrue)){
-            $this->attributes['vegan'] = true;
-        }
-        if(in_array($str,$acceptedvaluesFalse)){
-            $this->attributes['vegan'] = false;
-        }
-    }
-
-    function setAttributeVegetarisch($value){
-        $acceptedvaluesTrue = ["Yes","Ja","wahr",true];
-        $acceptedvaluesFalse = ["No","Nein","falsch",false];
-        $str = strtolower($value);
-        $str = str_replace(" ","",$str);
-        if(in_array($str,$acceptedvaluesTrue)){
-            $this->attributes['vegetarisch'] = true;
-        }
-        if(in_array($str,$acceptedvaluesFalse)){
-            $this->attributes['vegetarisch'] = false;
-        }
-    }
-}
-
 class Bewertung extends \Illuminate\Database\Eloquent\Model
 {
     public $timestamps = false;
