@@ -13,6 +13,6 @@ CREATE TABLE IF NOT EXISTS bewertungen
 
 CREATE PROCEDURE Hervorheben(IN bewertung_id INT(8))
 BEGIN
-    UPDATE bewertungen SET hervorgehoben = !hervorgehoben
+    UPDATE bewertungen SET hervorgehoben = NOT hervorgehoben
     WHERE id = bewertung_id;
 end;
