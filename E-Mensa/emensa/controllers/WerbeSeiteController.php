@@ -169,31 +169,43 @@ class WerbeSeiteController
                 $beschreibung = trim($_POST['description']);
             }
 
-            $setVegan = "";
+            $_SESSION['setVegan'] = NULL;
             if(isset($_POST['vegan'])){
-                $setVegan = trim($_POST['vegan']);
+                $_SESSION['setVegan'] = trim($_POST['vegan']);
             }
 
-            $setVegetarisch = "";
+            $_SESSION['setVegetarisch'] = NULL;
             if(isset($_POST['vegetarisch'])){
-                $setVegetarisch = trim($_POST['vegetarisch']);
+                $_SESSION['setVegetarisch'] = trim($_POST['vegetarisch']);
             }
 
+            $double_value_preisIntern = 0.0;
             $setPreisIntern = "";
             if(isset($_POST['preisIntern'])){
                 $setPreisIntern = trim($_POST['preisIntern']);
                 $double_value_preisIntern = floatval($setPreisIntern);
             }
 
+            $double_value_preisExtern = 0.0;
             $setPreisExtern = "";
             if(isset($_POST['preisExtern'])){
                 $setPreisExtern = trim($_POST['preisExtern']);
                 $double_value_preisExtern = floatval($setPreisExtern);
             }
-
-
-            wgericht($lastid,$gerichtname,$beschreibung,$erstellungsdatum,$setVegan,$setVegetarisch,$setPreisIntern,$setPreisExtern);
+            wgericht(55,$gerichtname,$beschreibung,$erstellungsdatum,$double_value_preisIntern,$double_value_preisExtern);
+            header('Location: /setVeganorVegetarisch');
         }
+        return view('wunschgericht');
+    }
+
+    public function setVeganorVegetarisch(): string
+    {
+        $insertvegetarisch = Gericht::query()->find(55);
+        $insertvegan = Gericht::query()->find(55);
+        $insertvegetarisch->vegetarisch = $_SESSION['setVegetarisch'];
+        $insertvegan->vegan = $_SESSION['setVegan'];
+        $insertvegetarisch->save();
+        $insertvegan->save();
         return view('wunschgericht');
     }
 }

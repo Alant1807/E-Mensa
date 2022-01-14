@@ -1,41 +1,29 @@
 <?php
 $TabellenInhalt =
     [
-        1 => ['1 1)', '10 min', '10 min', 'keine', 'Tabelle angelegt', 'keine', 'keine'],
-        2 => ['1 2)', '10 min', '5 min', 'der Frontcontroller ist mir direkt aufgefallen', 'direkt zu beginn im Frontcontroller', 'Keine', 'keine'],
-        3 => ['1 3)', '30 min', '1 Tag', 'mussten zuerst die Anmeldemaske hinzufügen', 'siehe 1 4)', 'keine Anmeldemaske gehabt', 'keine'],
-        4 => ['1 4)', '3 Stunden', '1 Tag', 'Wir haben zusätzlich eine Registrierenmaske hinzugefügt um es sinvoller zu gestalten', 'neuen Controller angelegt für das Anmelden/Registrieren, Model für die Anmelde/Registrierung und Validation hinzugefügt', 'keine', 'Vorlesung/Internet'],
-        5 => ['1 5)', '10 min', '10 min', 'keine', 'Transaktion begonnen und mit prepared Statements den Befehl UPDATE benutzer SET anzahlanmeldungen = anzahlanmeldungen + 1 WHERE email = (?) ausgeführt', 'keine', 'Vorlesung/Internet'],
-        6 => ['1 6)', '10 min', '10 min', 'keine', 'Transaktion und mit prepared Statements den Befehl UPDATE benutzer SET letzteanmeldung bzw letzterfehler = NOW() WHERE email = (?) ausgeführt', 'keine', 'Internet um den Befehl NOW() zu finden'],
-        7 => ['1 7)', '10 min', '5 minuten', 'ging schnell', 'in der Index.blade mit einer Session geprüft ob man angemeldet ist, wenn ja dann wird der benutzer angezeigt', 'keine', 'Vorlesung'],
-        8 => ['1 8)', '1 stunde', '45 min', 'ging schneller weil ich wenig coden musste', 'Neuen Controller angelegt und eine neue Blade /profile wo man die Daten des Benutzers sehen kann', 'keine', 'Keine'],
-        9 => ['1 9)', '5 min', '5 min', 'keine', 'in den SQL-Anweisungen der Anmeldungen die Funktionen mysqli_begin_transaction und mysqli_commit() verwendet', 'Keine', 'Keine'],
-        10 => ['1 10)', '10 min', '10 min', 'keine', 'eine funtion in den Anmeldecontroller fürs abmelden mit dem pfad/abmeldung konfiguriert ', 'keine', 'keine'],
-        11 => ['1 11)', '2 stunden', '1 Tag', 'habe zusätzlich noch die Funktion eingebaut um ein Konto zu entsperren', 'Neuen Controller implementiert, wo das konto entsperrt werden kann mit Wiederherstellungscode', 'Speichern in der Datenbank', 'keine'],
-        12 => ['1 13)', '5 min', '5 min', 'keine', 'password_hash() und password_verify() verwendet', 'keine', 'internet'],
-        13 => ['2 1)', '5 min', '5 min', 'keine', 'Tabelle eingerichtet', 'keine', 'keine'],
-        14 => ['2 2)', '1 stunde', 'paar tage später', 'probleme beim Speichern der Bilder in der Datenbank (mussten in den Supporttermin)', 'den Befehl UPDATE gericht SET bildname = (Name vom bild) WHERE id = ?', 'Am Anfang beim Speichern der Bilder in die Datenbank', 'Supporttermin'],
-        15 => ['2 3)', '15 min', '15 min', 'keine','in der index.blade als img src="" den pfad zum Bild angegeben', 'keine', 'keine'],
-        16 => ['2 4)', '5 min', '5 min', 'keine', 'Abgefragt ob das Bild existiert, wenn nicht dann den pfad zu missing imgs angegeben', 'keine', 'keine'],
-        17 => ['3)', '1 stunden', '4 Stunden', 'Monolog hat sich nicht downloaden lassen, brauchte etwas länger um das zu fixen plus Monolog einzurichten', 'Monolog herunterladen, logdatei einrichten', 'Download schlug fehl', 'Internet'],
-        18 => ['4 a)', '15 min', '5 min', 'war einfach', 'CREATE VIEW IF NOT EXISTS view_suppengerichte AS SELECT name FROM gericht WHERE name LIKE %suppe%;', 'keine', 'Vorlesung'],
-        19 => ['4 b)', '10 min', '5 min', 'war einfach', 'CREATE VIEW IF NOT EXISTS view_anmeldungen AS SELECT anzahlanmeldungen FROM benutzer ORDER BY anzahlanmeldungen ASC;', 'keine', 'Vorlesung'],
-        20 => ['4 c)', '15 min', '1 stunde', 'war komplizierter umzusetzen, sodass ich länger überlegen musste, bis ich auf die lösung kam', 'CREATE VIEW IF NOT EXISTS view_kategoriegerichte_vegetarisch AS
-SELECT gericht.name AS gerichtname ,
-       kategorie.name AS kategorie
-FROM gericht
-         JOIN gericht_hat_kategorie ON gericht.id = gericht_hat_kategorie.gericht_id && gericht.vegetarisch IS TRUE
-         RIGHT JOIN kategorie ON gericht_hat_kategorie.kategorie_id = kategorie.id;', 'keine', 'Vorlesung'],
-        21 => ['5 a)', '15 min', '15 min', 'keine', 'CREATE PROCEDURE AnmeldeCounter(IN email_input VARCHAR(100))
-BEGIN
-    UPDATE benutzer SET anzahlanmeldungen = anzahlanmeldungen + 1
-    WHERE email = email_input;
-end; CREATE PROCEDURE AnzahlfehlerCounter(IN email_input VARCHAR(100))
-BEGIN
-    UPDATE benutzer SET anzahlfehler = anzahlfehler + 1
-    WHERE email = email_input;
-end;', 'keine', 'Vorlesung'],
-        22 => ['5 b)', '5 min', '5 min', 'keine', 'in der Model die vorherige Inkrementierung ohne die Prozedur mit der neuen Prozedur ersetzt', 'keine', 'keine'],
+        1 => ['1 a)', '', '', '', '', '', ''],
+        2 => ['1 b)', '', '', '', '', '', ''],
+        3 => ['1 c)', '', '', '', '', '', ''],
+        4 => ['1 1)', '', '', '', '', '', ''],
+        5 => ['1 2)', '', '', '', '', '', ''],
+        6 => ['1 3)', '', '', '', '', '', ''],
+        7 => ['1 4)', '', '', '', '', '', ''],
+        8 => ['1 5)', '20 min', '20 min', 'keine', 'mit @media 2 Verschiedene CSS Dateien eine für unter und eine für über 600px', 'keine', 'Keine'],
+        9 => ['1 6)', '', '', '', '', '', ''],
+        10 => ['1 7)', '', '', '', '', '', ''],
+        11 => ['1 8)', '', '', '', '', '', ''],
+        12 => ['1 9)', '', '', '', '', '', ''],
+        13 => ['2 1)', '30 min', '1 Stunde 30 min', 'Hatte Probleme damit die Datenbank über den link zu ändern', 'habe eine Procedure die im Modell in einer funktion aufgerufen wird die im Controller ausgeführt wird und über den link aufgerufen wird', 'Keine', 'Vorlesung'],
+        14 => ['2 2)', '0 min', '0 min','In der 2 1) gemacht','keine','Keine', 'Keine'],
+        15 => ['2 3)', '5 min', '5 min', 'keine','eine Klasse mit einer if bedingung erstellt so das nur hervorgehobene diese klasse haben', 'keine', 'keine'],
+        16 => ['2 4)', '30 min', '25 min', 'Probleme mit CSS', 'habe der über den Werbeseiten Controller in der funktion index die Bewertungen übergeben und eine Tabelle in der index angelegt die in einer for-schleife nach hervorgehobenen bewertungen filtert', 'keine', 'keine'],
+        17 => ['3 1)', '', '', '', '', '', ''],
+        18 => ['3 2)', '', '', '', '', '', ''],
+        19 => ['3 3) a', '', '', '', '', '', ''],
+        20 => ['3 3) b', '', '', '', '', '', ''],
+        21 => ['3 4)', '', '', '', '', '', ''],
+        22 => ['3 5)', '', '', '', '', '', ''],
+        23 => ['3 6)', '', '', '', '', '', ''],
     ];
 
 function Createtabell(array $TabellenInhalt)

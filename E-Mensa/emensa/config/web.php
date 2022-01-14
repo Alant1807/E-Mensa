@@ -35,6 +35,7 @@ return array(
     '/bewertung' => 'WerbeSeiteController@bewertung',
     '/bewertungen' => 'WerbeSeiteController@bewertungen',
     '/meinebewertungen' => 'WerbeSeiteController@meinebewertungen',
+    '/setVeganorVegetarisch' => 'WerbeSeiteController@setVeganorVegetarisch',
 
     // Erstes Beispiel:
     '/m4_6a_queryparameter' => 'ExampleController@m4_6a_queryparameter',

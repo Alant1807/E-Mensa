@@ -27,13 +27,13 @@
             </p>
             <p>
                 <label for="setVegan" class="LabelVegan">Soll Ihr Gericht vegan sein? Schreiben Sie Ja oder Nein</label><br>
-                <textarea rows="1" cols="4" id="setVegan" class="FormVegan" name="vegan" minlength="4"></textarea>
+                <textarea rows="1" cols="4" id="setVegan" class="FormVegan" name="vegan" maxlength="4"></textarea>
             </p>
             <p class="Grid-Container5">
                 <label for="setVegetarisch" class="LabelVegetarisch">Soll Ihr Gericht vegan sein? Schreiben Sie Ja oder
                     Nein</label><br>
                 <textarea rows="1" cols="4" id="setVegetarisch" class="FormVegetarisch" name="vegetarisch"
-                          minlength="4"></textarea>
+                          maxlength="4"></textarea>
             </p>
             <p>
                 <label for="setpreisIntern" class="LabelPreisIntern">Wunschpreis intern?</label>

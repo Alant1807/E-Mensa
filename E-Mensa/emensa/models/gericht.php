@@ -14,6 +14,8 @@ class Gericht extends \Illuminate\Database\Eloquent\Model
     public $timestamps = false;
     protected $primaryKey = 'id';
     protected $table = 'gericht';
+    protected $fillable = ['id','name','beschreibung','erfasst_am',
+        'vegetarisch','vegan','preis_intern','preis_extern','bildname'];
 
     function getPreisInternAttribute($preis_intern): string
     {
@@ -25,7 +27,7 @@ class Gericht extends \Illuminate\Database\Eloquent\Model
         return number_format($preis_extern, 2);
     }
 
-    function setAttributeVegan($value)
+    function setVeganAttribute($value)
     {
         $acceptedvaluesTrue = ['yes', 'ja'];
         $acceptedvaluesFalse = ['no', 'nein'];
@@ -39,7 +41,7 @@ class Gericht extends \Illuminate\Database\Eloquent\Model
         }
     }
 
-    function setAttributeVegetarisch($value)
+    function setVegetarischAttribute($value)
     {
         $acceptedvaluesTrue = ["yes", "ja"];
         $acceptedvaluesFalse = ["no", "nein"];
@@ -146,12 +148,12 @@ function db_allergenlist(): array
     return $data;
 }
 
-function wgericht($id,$gerichtname,$beschreibung,$erstellungsdatum,$setvegan,$setvegetarisch,$preisIntern,$preisExtern){
+function wgericht($id,$name,$beschreibung,$erfasst_am,$preisIntern,$preisExtern){
     $link = connectdb();
     mysqli_begin_transaction($link);
     $statement = mysqli_stmt_init($link);
-    mysqli_stmt_prepare($statement, "INSERT INTO gericht (id, name, beschreibung, erfasst_am, vegetarisch, vegan, preis_intern, preis_extern, bildname) VALUES (?,?,?,?,?,?,?,?,'00_image_missing.jpg')");
-    mysqli_stmt_bind_param($statement, 'isssssdds', $id, $gerichtname,$beschreibung,$erstellungsdatum,$setvegan,$setvegetarisch,$preisIntern,$preisExtern);
+    mysqli_stmt_prepare($statement, "INSERT INTO gericht (id, name, beschreibung, erfasst_am, vegetarisch, vegan, preis_intern, preis_extern, bildname) VALUES (?,?,?,?,false,false,?,?,'00_image_missing.jpg')");
+    mysqli_stmt_bind_param($statement, 'isssdd',$id,$name,$beschreibung,$erfasst_am,$preisIntern,$preisExtern);
     mysqli_stmt_execute($statement);
     mysqli_commit($link);
     mysqli_close($link);
