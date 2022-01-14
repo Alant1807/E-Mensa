@@ -13,7 +13,7 @@
 </head>
 <body>
 <header>
-    <h3>@yield('title')</h3>
+    @yield('title')
 </header>
 <main>
     <div>

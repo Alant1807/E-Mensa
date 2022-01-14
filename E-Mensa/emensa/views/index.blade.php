@@ -16,7 +16,7 @@
         <li><a href="#Contact">Kontakt</a></li>
         <li><a href="#About us">Wichtig für uns</a></li>
         <li>
-            @if($_SESSION['login_ok'])
+            @if(isset($_SESSION['login_ok']))
                 <a href="/abmeldung">Abmelden</a>
             @else
                 <a href="/anmeldung">Anmelden</a>
@@ -57,12 +57,12 @@
         <table>
             <thead>
             <tr>
-                <th> Gericht</th>
+                <th></th>
                 <th> Preis intern</th>
                 <th> Preis extern</th>
                 <th> Allergene</th>
                 <th> Bilder</th>
-                @if($_SESSION['login_ok'])
+                @if(isset($_SESSION['login_ok']))
                     <th>Bewerten</th>
                 @endif
             </tr>
@@ -71,9 +71,9 @@
             @foreach($gerichte as $key => $gericht)
                 <tr>
                     <td>{{$gericht['name']}}</td>
-                    <td>{{$preisIntern[$key]}}€</td>
-                    <td>{{$preisExtern[$key]}}€</td>
-                    <td>{{$gericht['allergene']}}</td>
+                    <td>{{$gericht['preis_intern']}}€</td>
+                    <td>{{$gericht['preis_extern']}}€</td>
+                    <td>@if(isset($gericht['allergene'])){{$gericht['allergene']}} @endif</td>
                     @if($gericht['bildname'] == NULL || !file_exists("img/gerichte/" . $gericht['bildname']))
                         <td><img class="bilder" src="/img/gerichte/00_image_missing.jpg" alt="Bild des Gerichtes">
                         </td>
@@ -82,7 +82,7 @@
                                  alt="Bild des Gerichtes"
                             ></td>
                     @endif
-                    @if($_SESSION['login_ok'])
+                    @if(isset($_SESSION['login_ok']))
                         <td>
                             <a href="/bewertung?gerichtid={{$gericht['id']}}">Gericht bewerten</a>
                         </td>
@@ -100,7 +100,7 @@
 
 @section('hervorgehobeneGerichte')
     <div class="griditem MarkMeal">
-        <h1>Meinung unserer Kunden</h1>
+        <h1>Meinung unserer Kunedn</h1>
         <table>
             <thead>
             <th>Gericht</th>
@@ -131,7 +131,11 @@
             {{$refresher}} Besuche
         </div>
         <div class="griditem-1 griditem1-3"><a class="br">
-                {{$newsletteranmeldungen}} Newsletter
+                @if(isset($newsletteranmeldung))
+                    {{$newsletteranmeldungen}} Newsletter
+                @else
+                    0 Newsletter
+                @endif
             </a></div>
         <div class="griditem-1 griditem1-4"> {{$getrows}} Speisen</div>
     </div>
@@ -193,17 +197,17 @@
         <li><a>(c) E-Mensa GmbH &nbsp&nbsp|&nbsp&nbsp</a></li>
         <li>
             <a href="/profil">
-                @if($_SESSION['login_ok'])
+                @if(isset($_SESSION['login_ok']))
                     {{$_SESSION['email']}} &nbsp&nbsp|&nbsp&nbsp
                 @endif
             </a>
         </li>
         <li><a href=index.blade.php> Impressum &nbsp&nbsp|&nbsp&nbsp</a></li>
         <li><a href="/wunschgericht"> Wunschgericht</a></li>
-        <li><a href="/bewertungen"> @if($_SESSION['login_ok'])
+        <li><a href="/bewertungen"> @if(isset($_SESSION['login_ok']))
                     &nbsp&nbsp|&nbsp&nbsp Bewertungen &nbsp&nbsp|&nbsp&nbsp
                 @endif</a></li>
-        <li><a href="/meinebewertungen"> @if($_SESSION['login_ok'])
+        <li><a href="/meinebewertungen"> @if(isset($_SESSION['login_ok']))
                     meine Bewertungen
                 @endif</a></li>
     </ol>

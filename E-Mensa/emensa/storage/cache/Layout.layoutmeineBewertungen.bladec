@@ -13,7 +13,7 @@
 </head>
 <body>
 <header>
- <h3><?php echo $this->yieldContent('title'); ?></h3>
+ <?php echo $this->yieldContent('title'); ?>
 </header>
 <main>
  <div>

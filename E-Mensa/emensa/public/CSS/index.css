@@ -91,8 +91,8 @@ header{
 /*main*/
 .FrontBild{
     grid-area: picture;
-    width: 65vw;
-    height: 45vh;
+    width: 90vw;
+    height: 50vh;
 }
 
 .TextArea{
@@ -121,8 +121,8 @@ th {
 }
 
 .bilder{
-    width: 140px;
-    height: 125px;
+    width: 100px;
+    height: 100px;
 }
 
 .MarkMeal{
@@ -240,6 +240,16 @@ select {
 
 
 /*Impressum*/
+footer{
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+footer h3{
+    text-align: center;
+    color: white;
+}
+
 .Impressum {
     list-style-type: none;
     margin: 0;
@@ -250,14 +260,12 @@ select {
 
 .Impressum > li {
     color: white;
-    float: left
+    float: left;
 }
 
 .Impressum > li > a {
     display: block;
-    text-align: center
-}
-
-.griditem5 > footer {
-    text-align: center
+    text-align: center;
+    text-decoration-line: none;
+    color: white;
 }

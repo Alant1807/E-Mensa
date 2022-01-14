@@ -1,0 +1,93 @@
+var{
+    --marked: #7dc9e2;
+}
+
+html,body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(45deg, grey, black);
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h3{
+    text-align: center;
+    color: white;
+    margin: 0;
+}
+
+.title{
+    background-color: #55608f;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th{
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    color: #fff;
+    text-align: center;
+}
+
+tr{
+    color: white;
+    text-align: center;
+}
+
+td{
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    position: relative;
+}
+
+td a{
+    color: white;
+    text-decoration-line: none;
+}
+
+tr.marked td a{
+    color: var(--marked);
+}
+
+thead, th {
+    background-color: #55608f;
+}
+
+tr:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+
+td:hover:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    background-color: rgba(255,255,255,0.2);
+    z-index: -1;
+}
+
+.buttonMain,.buttonSubmit{
+    position: relative;
+    bottom: 0;
+    left: 0;
+    color: white;
+    background-color: #55608f;
+    border: none;
+    width: 10%;
+}

@@ -5,18 +5,21 @@
 @endsection
 
 @section('title')
-    Meine Bewertungen
+    <div class="title">
+        <h3> Meine Bewertungen </h3>
+    </div>
 @endsection
 
 @section('content')
-    <form method="post" action="meinebewertungen">
+    <form method="post" action="meinebewertungen" class="container">
         <table>
             <thead>
             <tr>
                 <th>Gericht</th>
-                <th>Sternenbewertung</th>
+                <th>Sternebewertung</th>
                 <th>Bemerkung</th>
                 <th>Bewertungszeitraum</th>
+                <th>Markieren</th>
             </tr>
             </thead>
             <tbody>
@@ -31,7 +34,7 @@
             @endforeach
             </tbody>
         </table>
-        <input type="submit" name="back" value="Hauptseite">
-        <input type="submit" name="submitdelete" value="löschen">
+        <input type="submit" name="back" value="Hauptseite" class="buttonMain">
+        <input type="submit" name="submitdelete" value="löschen" class="buttonSubmit">
     </form>
 @endsection

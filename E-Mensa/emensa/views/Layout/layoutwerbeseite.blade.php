@@ -33,9 +33,9 @@
     </div>
 </main>
 
-<div class="footer">
-    <a>Wir freuen uns auf ihren Besuch!</a>
-    <footer id="Contact">@yield('impressum')</footer>
-</div>
+<footer class="footer">
+    <h3>Wir freuen uns auf ihren Besuch!</h3>
+    <div id="Contact">@yield('impressum')</div>
+</footer>
 </body>
 </html>
