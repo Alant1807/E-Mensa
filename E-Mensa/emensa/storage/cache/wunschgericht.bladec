@@ -10,42 +10,36 @@
  Wunschgericht
 <?php $this->stopSection(); ?>
 
-<?php $this->startSection('title'); ?>
- Tragen Sie ihr Wunschgericht ein
-<?php $this->stopSection(); ?>
-
 <?php $this->startSection('form'); ?>
  <form class="form" method="post" action="wunschgericht">
- <fieldset>
- <p>
- <label for="mealname" class="LabelMealName">Name des Gerichtes</label>
- <input id="mealname" class="form-gerichtname" type="text" name="mealname">
- </p>
- <p>
- <label for="description" class="LabelDescription">Beschreibung</label>
- <textarea id="description" class="form-beschreibung" type="text" name="description"></textarea>
- </p>
- <p>
- <label for="setVegan" class="LabelVegan">Soll Ihr Gericht vegan sein? Schreiben Sie Ja oder Nein</label><br>
- <textarea rows="1" cols="4" id="setVegan" class="FormVegan" name="vegan" maxlength="4"></textarea>
- </p>
- <p class="Grid-Container5">
- <label for="setVegetarisch" class="LabelVegetarisch">Soll Ihr Gericht vegan sein? Schreiben Sie Ja oder
- Nein</label><br>
- <textarea rows="1" cols="4" id="setVegetarisch" class="FormVegetarisch" name="vegetarisch"
- maxlength="4"></textarea>
- </p>
- <p>
- <label for="setpreisIntern" class="LabelPreisIntern">Wunschpreis intern?</label>
- <input id="setpreisIntern" class="FormpreisIntern" type="text" name="preisIntern">
- </p>
- <p>
- <label for="setpreisExtern" class="LabelPreisExtern">Wunschpreis Extern?</label>
- <input id="setpreisExtern" class="FormpreisExtern" type="text" name="preisExtern">
- </p>
- <input type="submit" <?php echo 'value="' . htmlspecialchars('Abschicken') . '"'; ?> name="submit"
- class="button">
- </fieldset>
+ <div class="title">
+ <h3>Tragen Sie ihr Wunschgericht ein</h3>
+ </div>
+ <div class="name input">
+ <label for="mealname" class="LabelMealName"></label>
+ <input id="mealname" class="form-gerichtname" placeholder="Name des Gerichtes" type="text" name="mealname">
+ </div>
+ <div class="description input">
+ <label for="description" class="LabelDescription"></label>
+ <textarea id="description" class="form-beschreibung" placeholder="Beschreibung" type="text" name="description"></textarea>
+ </div>
+ <div class="vegan input">
+ <label for="setVegan" class="LabelVegan"></label>
+ <textarea rows="1" cols="4" id="setVegan" class="FormVegan" placeholder="Soll Ihr Gericht vegan sein? Schreiben Sie Ja oder Nein" name="vegan" maxlength="4"></textarea>
+ </div>
+ <div class="vegetarian input">
+ <label for="setVegetarisch" class="LabelVegetarisch"></label>
+ <textarea rows="1" cols="4" id="setVegetarisch" class="FormVegetarisch" placeholder="Soll Ihr Gericht vegan sein? Schreiben Sie Ja oder Nein" name="vegetarisch" maxlength="4"></textarea>
+ </div>
+ <div class="priceIntern input">
+ <label for="setpreisIntern" class="LabelPreisIntern"></label>
+ <input id="setpreisIntern" class="FormpreisIntern" placeholder="Wunschpreis intern?" type="text" name="preisIntern">
+ </div>
+ <div class="priceExtern input">
+ <label for="setpreisExtern" class="LabelPreisExtern"></label>
+ <input id="setpreisExtern" class="FormpreisExtern" placeholder="Wunschpreis Extern?" type="text" name="preisExtern">
+ </div>
+ <input type="submit" <?php echo 'value="' . htmlspecialchars('Abschicken') . '"'; ?> name="submit" class="button">
  </form>
 <?php $this->stopSection(); ?>
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('Layout.layoutwunschgericht'); } ?>

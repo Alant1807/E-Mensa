@@ -1,7 +1,7 @@
 <?php
 $TabellenInhalt =
     [
-        1 => ['1 a)', '', '', '', '', '', ''],
+        1 => ['1 a)', '5 min', '5 min', 'keine', '<img src="beispiele/m6_a1.jpg">', 'keine', 'keine'],
         2 => ['1 b)', '10 min', '10 min', 'keine', 'Table erstellt mit den attributen und ihren nebenbedingungen und datentypen', 'keine', 'keine'],
         3 => ['1 1)', '30 min', '1 stunde', 'wusste nicht wie ich das zuerst umsetzen soll', 'neue route zur bewertung + blade', 'keine', 'keine'],
         4 => ['1 2)', '15 min', '15 min', 'keine', 'neue model namens bewertung.php angelegt, wo ich die bewertung setze', 'keine', 'keine'],

@@ -700,3 +700,5 @@
 [2022-01-14T17:58:01.823687+00:00] name.INFO: Zugriff auf Hauptseite ["hi@hi.de"] []
 [2022-01-14T17:58:08.479665+00:00] name.INFO: Zugriff auf Hauptseite ["hi@hi.de"] []
 [2022-01-14T18:04:34.560760+00:00] name.INFO: Zugriff auf Hauptseite ["hi@hi.de"] []
+[2022-01-14T19:30:44.464332+00:00] name.INFO: Zugriff auf Hauptseite ohne Anmeldung/Registrierung [] []
+[2022-01-14T20:03:41.639390+00:00] name.INFO: Zugriff auf Hauptseite ohne Anmeldung/Registrierung [] []
