@@ -71,7 +71,7 @@ class WerbeSeiteController
         if (isset($_POST['back'])) {
             header('Location: /');
         }
-        if(isset($rd->query['hervorheben']) && $_SESSION['admin'] == true){
+        if (isset($rd->query['hervorheben']) && $_SESSION['admin'] == true) {
             $hervorheben = Bewertung::query()->find($rd->query['hervorheben']);
             $hervorheben->hervorgehoben ^= 1;
             $hervorheben->save();
@@ -88,9 +88,11 @@ class WerbeSeiteController
         if (isset($_SESSION['login_ok'])) {
             $vars = ['bewertungen' => get_user_Bewertungen($_SESSION['email'])];
             if (isset($_POST['submitdelete'])) {
-                $removeReview = Bewertung::query()->where('gericht_id',$_POST['delete'])->where('kunde',$_SESSION['email']);
-                $removeReview->delete();
-                echo "<meta http-equiv='refresh' content='0'>";
+                foreach ($_POST['delete'] as $deleteMeal) {
+                    $removeReview = Bewertung::query()->where('id', $deleteMeal)->where('kunde', $_SESSION['email']);
+                    $removeReview->delete();
+                    echo "<meta http-equiv='refresh' content='0'>";
+                }
                 return view('meineBewertungen', $vars);
             }
             return view('meineBewertungen', $vars);
@@ -170,29 +172,29 @@ class WerbeSeiteController
             }
 
             $_SESSION['setVegan'] = NULL;
-            if(isset($_POST['vegan'])){
+            if (isset($_POST['vegan'])) {
                 $_SESSION['setVegan'] = trim($_POST['vegan']);
             }
 
             $_SESSION['setVegetarisch'] = NULL;
-            if(isset($_POST['vegetarisch'])){
+            if (isset($_POST['vegetarisch'])) {
                 $_SESSION['setVegetarisch'] = trim($_POST['vegetarisch']);
             }
 
             $double_value_preisIntern = 0.0;
             $setPreisIntern = "";
-            if(isset($_POST['preisIntern'])){
+            if (isset($_POST['preisIntern'])) {
                 $setPreisIntern = trim($_POST['preisIntern']);
                 $double_value_preisIntern = floatval($setPreisIntern);
             }
 
             $double_value_preisExtern = 0.0;
             $setPreisExtern = "";
-            if(isset($_POST['preisExtern'])){
+            if (isset($_POST['preisExtern'])) {
                 $setPreisExtern = trim($_POST['preisExtern']);
                 $double_value_preisExtern = floatval($setPreisExtern);
             }
-            wgericht(55,$gerichtname,$beschreibung,$erstellungsdatum,$double_value_preisIntern,$double_value_preisExtern);
+            wgericht(55, $gerichtname, $beschreibung, $erstellungsdatum, $double_value_preisIntern, $double_value_preisExtern);
             header('Location: /setVeganorVegetarisch');
         }
         return view('wunschgericht');

@@ -26,7 +26,7 @@
                     <td>{{$bewertung['sternebewertung']}}</td>
                     <td>{{$bewertung['bemerkung']}}</td>
                     <td>{{$bewertung['bewertungszeitpunkt']}}</td>
-                    <td><input type="checkbox" name="delete[]" value="{{$bewertung['gericht_id']}}"></td>
+                    <td><input type="checkbox" name="delete[]" value="{{$bewertung['id']}}"></td>
                 </tr>
             @endforeach
             </tbody>
