@@ -194,7 +194,7 @@ class WerbeSeiteController
                 $setPreisExtern = trim($_POST['preisExtern']);
                 $double_value_preisExtern = floatval($setPreisExtern);
             }
-            wgericht(55, $gerichtname, $beschreibung, $erstellungsdatum, $double_value_preisIntern, $double_value_preisExtern);
+            wgericht(66, $gerichtname, $beschreibung, $erstellungsdatum, $double_value_preisIntern, $double_value_preisExtern);
             header('Location: /setVeganorVegetarisch');
         }
         return view('wunschgericht');
@@ -202,8 +202,8 @@ class WerbeSeiteController
 
     public function setVeganorVegetarisch(): string
     {
-        $insertvegetarisch = Gericht::query()->find(55);
-        $insertvegan = Gericht::query()->find(55);
+        $insertvegetarisch = Gericht::query()->find(66);
+        $insertvegan = Gericht::query()->find(66);
         $insertvegetarisch->vegetarisch = $_SESSION['setVegetarisch'];
         $insertvegan->vegan = $_SESSION['setVegan'];
         $insertvegetarisch->save();

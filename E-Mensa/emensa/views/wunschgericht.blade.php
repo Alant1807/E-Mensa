@@ -29,7 +29,7 @@
         </div>
         <div class="vegetarian input">
             <label for="setVegetarisch" class="LabelVegetarisch"></label>
-            <textarea rows="1" cols="4" id="setVegetarisch" class="FormVegetarisch" placeholder="Soll Ihr Gericht vegan sein? Schreiben Sie Ja oder Nein" name="vegetarisch" maxlength="4"></textarea>
+            <textarea rows="1" cols="4" id="setVegetarisch" class="FormVegetarisch" placeholder="Soll Ihr Gericht vegetarisch sein? Schreiben Sie Ja oder Nein" name="vegetarisch" maxlength="4"></textarea>
         </div>
         <div class="priceIntern input">
             <label for="setpreisIntern" class="LabelPreisIntern"></label>
