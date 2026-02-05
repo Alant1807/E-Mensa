@@ -16,7 +16,7 @@ class ResetController
             'failurerepeatpass' => $_SESSION['failurerepeatpass'] ?? NULL,
             'notequalPass' => $_SESSION['notequalPass'] ?? NULL,
             'fail_email' => $_SESSION['fail_email'] ?? NULL,
-            'notequalMail' => $_SESSION['notequalMail']] ?? NULL;
+            'notequalMail' => $_SESSION['notequalMail'] ?? NULL];
         if (isset($_SESSION['failurepass']) || isset($_SESSION['failurerepeatpass'])
             || isset($_SESSION['notequalPass']) || isset($_SESSION['fail_email']) || isset($_SESSION['notequalMail'])) {
             $_SESSION['failurepass'] = NULL;
@@ -31,7 +31,7 @@ class ResetController
     public function resetKontowithCode(): string
     {
         $vars = ['emptycode' => $_SESSION['emptycode'] ?? NULL,
-            'falsecode' => $_SESSION['falsecode']] ?? NULL;
+            'falsecode' => $_SESSION['falsecode'] ?? NULL];
         if (isset($_SESSION['emptycode']) || isset($_SESSION['falsecode'])) {
             $_SESSION['emptycode'] = NULL;
             $_SESSION['falsecode'] = NULL;
@@ -50,12 +50,15 @@ class ResetController
             if (empty($code)) {
                 $_SESSION['emptycode'] = "Bitte geben sie Ihren Code ein";
                 header('Location: /resetKontowithCode');
+                exit();
             } else {
-                if (password_verify($code, $data['code'])) {
+                if ($data && password_verify($code, $data['code'])) {
                     header('Location: /anmeldung');
-                } elseif (!password_verify($code, $data['code'])) {
+                    exit();
+                } else {
                     $_SESSION['falsecode'] = "Der Code stimmt mit Ihren nicht überein";
                     header('Location: /resetKontowithCode');
+                    exit();
                 }
             }
         }
@@ -94,24 +97,29 @@ class ResetController
             }
             if ($fail) {
                 header('Location: /zuruecksetzen');
+                exit();
             }
             if (!empty($password) && !empty($repeatpass) && !empty($email)) {
-                if ($password == $repeatpass && $data['email'] == $email) {
+                if ($data && $password == $repeatpass && $data['email'] == $email) {
                     resetUser($email, $password_hash);
                     $_SESSION['email'] = $email;
                     $_SESSION['login_attempts'] = NULL;
                     header('Location: /resetKontowithCode');
+                    exit();
                 }
-                if ($password != $repeatpass && $data['email'] != $email) {
+                if ($password != $repeatpass && (!$data || $data['email'] != $email)) {
                     $_SESSION['notequalPass'] = "Passwort stimmt nicht überein";
                     $_SESSION['notequalMail'] = "E-Mail stimmt nicht überein";
                     header('Location: /zuruecksetzen');
-                } elseif ($password != $repeatpass && $data['email'] == $email) {
+                    exit();
+                } elseif ($password != $repeatpass && $data && $data['email'] == $email) {
                     $_SESSION['notequalPass'] = "Passwort stimmt nicht überein";
                     header('Location: /zuruecksetzen');
-                } elseif ($password == $repeatpass && $data['email'] != $email) {
+                    exit();
+                } elseif ($password == $repeatpass && (!$data || $data['email'] != $email)) {
                     $_SESSION['notequalMail'] = "E-Mail stimmt nicht überein";
                     header('Location: /zuruecksetzen');
+                    exit();
                 }
             }
         }

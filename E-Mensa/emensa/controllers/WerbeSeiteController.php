@@ -54,10 +54,12 @@ class WerbeSeiteController
         $gericht_id = $rd->query['gerichtid'] ?? 1;
         if (isset($_POST['back'])) {
             header('Location: /');
+            exit();
         }
         if (isset($_POST['submit'])) {
             Set_Bewertungen($_POST);
             header('Location: /meinebewertungen');
+            exit();
         }
         if (isset($_SESSION['login_ok'])) {
             $vars = ['gericht' => Gericht::query()->find($gericht_id)];
@@ -70,8 +72,9 @@ class WerbeSeiteController
     {
         if (isset($_POST['back'])) {
             header('Location: /');
+            exit();
         }
-        if (isset($rd->query['hervorheben']) && $_SESSION['admin'] == true) {
+        if (isset($rd->query['hervorheben']) && isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
             $hervorheben = Bewertung::query()->find($rd->query['hervorheben']);
             $hervorheben->hervorgehoben ^= 1;
             $hervorheben->save();
@@ -84,6 +87,7 @@ class WerbeSeiteController
     {
         if (isset($_POST['back'])) {
             header('Location: /');
+            exit();
         }
         if (isset($_SESSION['login_ok'])) {
             $vars = ['bewertungen' => get_user_Bewertungen($_SESSION['email'])];
@@ -104,7 +108,7 @@ class WerbeSeiteController
         $benutzername = trim($_POST['text'] ?? NULL);
         $email = filter_input(INPUT_POST, 'email');
         $language = filter_input(INPUT_POST, 'language');
-        $notdomains = ["rcpt.at" . "damnthespam.at", "wegwerfmail.de", "trashmail.de", "trashmail.com"];
+        $notdomains = ["rcpt.at", "damnthespam.at", "wegwerfmail.de", "trashmail.de", "trashmail.com"];
         $_SESSION['newsletteranmeldungen'] = 0;
         $iferror = false;
         $successful = true;
@@ -132,7 +136,7 @@ class WerbeSeiteController
                 $successful = false;
             }
         }
-        if ($email == $data['email']) {
+        if ($data && $email == $data['email']) {
             $_SESSION['existemail'] = "E-Mail ist schon vergeben";
             $iferror = true;
             $successful = false;
@@ -144,6 +148,7 @@ class WerbeSeiteController
         }
         if ($iferror) {
             header('Location: /');
+            exit();
         }
         if ($iferror == false) {
             insertNewsletter($benutzername, $email, $language);
@@ -152,6 +157,7 @@ class WerbeSeiteController
         if ($successful == true) {
             $_SESSION['newsletteranmeldungen']++;
             header('Location: /');
+            exit();
         }
     }
 
@@ -196,6 +202,7 @@ class WerbeSeiteController
             }
             wgericht(66, $gerichtname, $beschreibung, $erstellungsdatum, $double_value_preisIntern, $double_value_preisExtern);
             header('Location: /setVeganorVegetarisch');
+            exit();
         }
         return view('wunschgericht');
     }
