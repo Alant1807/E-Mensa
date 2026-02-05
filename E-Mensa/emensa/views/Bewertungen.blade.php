@@ -20,19 +20,19 @@
                 <th>Bemerkung</th>
                 <th>Bewertungszeitraum</th>
                 <th>Kunde</th>
-                @if($_SESSION['admin'] == true) <th>Hervorhebung</th> @endif
+                @if(isset($_SESSION['admin']) && $_SESSION['admin'] == true) <th>Hervorhebung</th> @endif
             </tr>
             </thead>
             <tbody>
             @foreach($bewertungen as $bewertung)
-                <tr class="@if($bewertung['hervorgehoben'] && $_SESSION['admin'] == true) marked @endif">
+                <tr class="@if($bewertung['hervorgehoben'] && isset($_SESSION['admin']) && $_SESSION['admin'] == true) marked @endif">
                     <td>{{$bewertung['name']}}</td>
                     <td>{{$bewertung['sternebewertung']}}</td>
                     <td>{{$bewertung['bemerkung']}}</td>
                     <td>{{$bewertung['bewertungszeitpunkt']}}</td>
                     <td>{{$bewertung['kunde']}}</td>
                     <td>
-                        @if($_SESSION['admin'] == 1 )
+                        @if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1 )
                             <a  href="/bewertungen?hervorheben={{$bewertung['id']}}" >
                                 @if($bewertung['hervorgehoben'])
                                     Hervorhebung Auflösen

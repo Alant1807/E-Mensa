@@ -56,8 +56,11 @@ function get_Bewertungen(): array
 function get_user_Bewertungen($user): bool|array|null
 {
     $link = connectdb();
-    $sql = "SELECT bewertungen.*, gericht.name FROM bewertungen,gericht WHERE gericht.id = bewertungen.gericht_id AND bewertungen.kunde = " . "'$user'" . " ORDER BY bewertungszeitpunkt DESC";
-    $result = mysqli_query($link, $sql);
+    $statement = mysqli_stmt_init($link);
+    mysqli_stmt_prepare($statement, "SELECT bewertungen.*, gericht.name FROM bewertungen,gericht WHERE gericht.id = bewertungen.gericht_id AND bewertungen.kunde = ? ORDER BY bewertungszeitpunkt DESC");
+    mysqli_stmt_bind_param($statement, 's', $user);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
     $data = mysqli_fetch_all($result, MYSQLI_BOTH);
     mysqli_close($link);
     return $data;

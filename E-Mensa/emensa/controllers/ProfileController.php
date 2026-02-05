@@ -13,10 +13,11 @@ class ProfileController
 {
     public function profil(): string
     {
-        if ($_POST['zurueck']) {
+        if (isset($_POST['zurueck'])) {
             header('Location: /');
+            exit();
         }
-        if ($_SESSION['login_ok'] == true) {
+        if (isset($_SESSION['login_ok']) && $_SESSION['login_ok'] == true) {
             $data = getUser($_SESSION['email']);
             return view('profil', ['userinfo' => $data]);
         } else {
